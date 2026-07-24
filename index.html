@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090b0d">
+<title>The Blindfolded Monkey — Random Pick Lab</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <nav class="topbar" aria-label="Simulation identity">
+    <div class="brand"><span class="brand-mark"><span>M</span></span> Random Pick Lab</div>
+    <div class="live-state"><span class="live-dot"></span><span id="top-status">Cryptographic RNG ready</span></div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <p class="kicker">31 tickers · 25 blind cards · zero conviction</p>
+      <h1>Can a blindfolded <em>monkey</em> beat your watchlist?</h1>
+      <p class="hero-copy">A cinematic random-pick experiment inspired by Burton Malkiel. The watchlist is <strong>reshuffled before every throw</strong>; the monkey sees nothing, and each ticker receives exactly the same chance of selection.</p>
+    </div>
+    <aside class="fairness-card" aria-label="Fairness proof">
+      <div class="fairness-label">The fairness proof</div>
+      <div class="equation">P(pick) = 25/31 × 1/25 = <strong>1/31</strong></div>
+      <ul class="audit-list">
+        <li>Fresh Fisher–Yates shuffle every throw</li>
+        <li>Modulo bias removed by rejection sampling</li>
+        <li>Every result retained in an exportable ledger</li>
+      </ul>
+    </aside>
+  </header>
+
+  <main>
+    <section class="stage-shell" aria-label="Blindfolded monkey dart simulation">
+      <div class="stage-head"><span class="stage-title">Live range / 5 × 5 wall</span><span class="stage-hint">Press space to throw · audit mode reveals the current deal</span></div>
+      <div class="range" id="range">
+        <div class="sky"></div><div class="sidewall left"></div><div class="sidewall right"></div><div class="glow left"></div><div class="glow right"></div>
+        <svg class="floor" viewBox="0 0 1000 460" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="felt" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#0a1b15"/><stop offset="1" stop-color="#18352b"/></linearGradient><clipPath id="clip"><polygon points="0,460 1000,460 674,20 326,20"/></clipPath></defs><polygon points="0,460 1000,460 674,20 326,20" fill="url(#felt)"/><g clip-path="url(#clip)" stroke="rgba(255,255,255,.065)" stroke-width="2"><line x1="100" y1="460" x2="500" y2="-150"/><line x1="300" y1="460" x2="500" y2="-150"/><line x1="500" y1="460" x2="500" y2="-150"/><line x1="700" y1="460" x2="500" y2="-150"/><line x1="900" y1="460" x2="500" y2="-150"/><line x1="80" y1="350" x2="920" y2="350"/><line x1="190" y1="220" x2="810" y2="220"/><line x1="280" y1="110" x2="720" y2="110"/></g></svg>
+        <div class="spotlight"></div>
+        <div class="board"><div class="board-rail"></div><div class="board-frame"><div class="grid" id="grid"></div></div><div class="plaque" id="plaque"><span class="plaque-label">Last draw</span><span class="plaque-name">No dart thrown yet. The wall is blind.</span></div></div>
+        <div class="range-badge"><small>Current verdict</small><strong id="stage-verdict">The experiment is armed.</strong><span id="stage-sub">One fair throw is all it takes to begin.</span></div>
+        <svg class="monkey" id="monkey" viewBox="0 0 480 420" role="img" aria-label="Rear view of a blindfolded monkey holding a dart">
+          <g opacity=".82"><ellipse cx="190" cy="430" rx="235" ry="206" fill="#0d0907"/><ellipse cx="99" cy="156" rx="27" ry="35" fill="#0d0907"/><ellipse cx="243" cy="156" rx="27" ry="35" fill="#0d0907"/><circle cx="171" cy="170" r="85" fill="#0d0907"/></g>
+          <g opacity=".28" fill="#d8a748"><ellipse cx="190" cy="430" rx="235" ry="206"/><ellipse cx="99" cy="156" rx="27" ry="35"/><ellipse cx="243" cy="156" rx="27" ry="35"/><circle cx="171" cy="170" r="85"/></g>
+          <ellipse cx="190" cy="430" rx="225" ry="198" fill="#130d09"/><ellipse cx="100" cy="157" rx="24" ry="32" fill="#130d09"/><ellipse cx="242" cy="157" rx="24" ry="32" fill="#130d09"/><circle cx="171" cy="170" r="81" fill="#130d09"/>
+          <path d="M91 165 Q171 143 251 169 L251 196 Q171 168 91 195 Z" fill="#d64d3b"/><ellipse cx="253" cy="184" rx="16" ry="14" fill="#f06a52"/><path d="M262 191 Q280 211 269 235" fill="none" stroke="#d64d3b" stroke-width="8" stroke-linecap="round"/>
+          <g id="throw-arm"><path d="M300 255 C344 232 372 188 396 146" fill="none" stroke="#21150c" stroke-width="45" stroke-linecap="round"/><circle cx="396" cy="146" r="25" fill="#21150c"/><circle id="hand" cx="396" cy="146" r="6" fill="transparent"/><g id="held-dart" transform="translate(396,146) rotate(-28) scale(1.6) translate(-6,-10)"><polygon points="0,6 11,2.5 11,9.5" fill="#eee"/><rect x="11" y="2.5" width="26" height="7" rx="1.4" fill="#d8a748"/><rect x="37" y="4.5" width="12" height="3" fill="#89959b"/><polygon points="49,6 66,0 66,12" fill="#d64d3b"/></g></g>
+        </svg>
+      </div>
+      <div class="controls">
+        <button class="primary" id="throw" type="button">Deal + throw</button>
+        <button id="throw10" type="button">Run 10</button>
+        <button id="throw100" type="button">Run 100</button>
+        <button id="audit" type="button">Audit wall</button>
+        <button class="wide-hide" id="copy" type="button">Copy CSV</button>
+        <button class="ghost" id="reset" type="button">Reset</button>
+      </div>
+      <div class="command-note">Selection randomness uses crypto.getRandomValues where available. Impact position is cosmetic only.</div>
+    </section>
+
+    <section class="section" aria-labelledby="results-title">
+      <div class="section-head"><div><p class="kicker">Live experiment</p><h2 id="results-title">Luck, measured properly.</h2></div><p>The original wall test is retained internally, but the headline fairness metric now evaluates the 31 ticker outcomes themselves.</p></div>
+      <div class="kpis">
+        <div class="kpi"><div class="kpi-label">Throws</div><div class="kpi-value" id="k-throws">0</div><div class="kpi-note">completed selections</div></div>
+        <div class="kpi"><div class="kpi-label">Distinct picks</div><div class="kpi-value" id="k-distinct">0 <small>/ 31</small></div><div class="kpi-note" id="k-distinct-note">expected 0.0</div></div>
+        <div class="kpi"><div class="kpi-label">Repeat rate</div><div class="kpi-value" id="k-repeat">0.0%</div><div class="kpi-note">draws already seen</div></div>
+        <div class="kpi"><div class="kpi-label">Wall coverage</div><div class="kpi-value" id="k-cells">0 <small>/ 25</small></div><div class="kpi-note">physical cells struck</div></div>
+        <div class="kpi"><div class="kpi-label">Ticker entropy</div><div class="kpi-value" id="k-entropy">—</div><div class="kpi-note">1.000 is perfectly spread</div></div>
+        <div class="kpi"><div class="kpi-label">Ticker fairness</div><div class="kpi-value" id="k-fair">—</div><div class="kpi-note" id="k-fair-note">need 31+ throws</div></div>
+      </div>
+
+      <div class="insight-grid">
+        <section class="panel"><div class="panel-head"><span class="panel-title">Observed ticker distribution</span><span class="panel-meta" id="dist-meta">No observations</span></div><div class="distribution" id="distribution" aria-label="Ticker frequency chart"></div></section>
+        <section class="panel"><div class="panel-head"><span class="panel-title">Regime mix</span><span class="panel-meta">observed vs deck</span></div><div class="regimes" id="regimes"></div></section>
+      </div>
+      <div class="entropy" id="entropy"><b>RNG</b> awaiting first throw · source <span class="v">crypto.getRandomValues</span> · unbiased integer selection via rejection sampling</div>
+    </section>
+
+    <section class="panel ledger-panel" aria-labelledby="ledger-title">
+      <div class="panel-head"><span class="panel-title" id="ledger-title">Draw ledger</span><div class="ledger-tools"><button id="download" type="button">Download CSV</button></div></div>
+      <div class="table-wrap"><table><thead><tr><th>#</th><th>Cell</th><th>Ticker</th><th>Company or fund</th><th>Type</th><th>Exchange</th><th>Sector</th><th>Cluster</th><th>Regime</th><th>Portfolio</th><th>Verified</th></tr></thead><tbody id="ledger"><tr><td class="empty" colspan="11">Throw a dart to open the first card.</td></tr></tbody></table></div>
+    </section>
+
+    <section class="section" aria-labelledby="method-title">
+      <div class="section-head"><div><p class="kicker">Method, not magic</p><h2 id="method-title">Why every ticker stays equally likely.</h2></div></div>
+      <div class="method">
+        <article class="method-card"><div class="method-no">01 / REDEAL</div><h3>Shuffle all 31</h3><p>A fresh cryptographic Fisher–Yates shuffle creates a new order before every throw. The first 25 entries become the hidden wall.</p></article>
+        <article class="method-card"><div class="method-no">02 / TARGET</div><h3>Choose one of 25</h3><p>The target cell is generated with rejection sampling. Values in the uneven modulo tail are discarded, so no cell receives a microscopic edge.</p></article>
+        <article class="method-card"><div class="method-no">03 / VERIFY</div><h3>Test the tickers</h3><p>The dashboard computes a 31-category chi-square test and a normalised Shannon entropy score, rather than stopping at the less relevant cell distribution.</p></article>
+      </div>
+      <p class="footnote"><strong>Interpretation.</strong> A p-value at or above 0.05 means the observed ticker mix is statistically consistent with equal 1/31 probabilities; it does not “prove” randomness. Small samples naturally look lumpy. This simulator is an educational experiment, not investment advice.</p>
+    </section>
+  </main>
+  <p class="sr" id="live" role="status" aria-live="polite"></p>
+</div>
+<div id="flight"></div><div class="toast" id="toast"></div>
+<script src="tickers.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
