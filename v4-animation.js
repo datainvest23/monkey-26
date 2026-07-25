@@ -18,5 +18,5 @@ var verdict=$('stage-verdict');
 new MutationObserver(function(){if(guard)return;var raw=verdict.textContent.trim(),row=E&&E.ledger&&E.ledger[0];if(/ selected$/i.test(raw)&&row){var delta=E.throws-lastThrows;lastThrows=E.throws;populateCard(row);if(delta===1)animate(row);}else if(E&&E.ledger&&E.ledger.length===0&&raw!=='—'){resetCard();}}).observe(verdict,{childList:true,characterData:true,subtree:true});
 var reset=$('reset');if(reset)reset.addEventListener('click',function(){setTimeout(function(){lastThrows=0;resetCard();},0);});
 var audit=$('audit');if(audit){new MutationObserver(function(){if(audit.querySelector('.control-copy'))return;var hide=/hide/i.test(audit.textContent);audit.innerHTML='<span class="control-icon">▦</span><span class="control-copy"><b>'+(hide?'Hide wall':'Audit wall')+'</b><small>'+(hide?'Return to blind mode':'Reveal current wall')+'</small></span>';}).observe(audit,{childList:true,subtree:true});}
-var layout=document.createElement('script');layout.src='v6.js';document.head.appendChild(layout);
+var layout=document.createElement('script');layout.src='v6.js';layout.onload=function(){var scenes=document.createElement('script');scenes.src='v7.js';document.head.appendChild(scenes);};document.head.appendChild(layout);
 })(window);
