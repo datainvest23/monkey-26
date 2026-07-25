@@ -1,0 +1,38 @@
+name: Validate Global 360
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/global360/**"
+      - "scripts/validate-universe.js"
+      - "v3-data.js"
+      - ".github/workflows/validate-global360.yml"
+  pull_request:
+    paths:
+      - "data/global360/**"
+      - "scripts/validate-universe.js"
+      - "v3-data.js"
+      - ".github/workflows/validate-global360.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate governed universe
+        run: node scripts/validate-universe.js
+      - name: Validate Version 3 JavaScript
+        run: |
+          node --check v3-data.js
+          node --check v3-engine.js
+          node --check v3-ui.js
