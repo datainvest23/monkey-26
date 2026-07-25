@@ -1,0 +1,223 @@
+/* Monkey 26 — active-pick card and control dashboard refinement */
+.stage-v4 .verdict-card{
+  right:2.4%;
+  top:8.2%;
+  width:min(356px,29%);
+  padding:24px;
+  border:1px solid rgba(67,197,139,.48);
+  border-top:2px solid var(--stage-green);
+  border-radius:10px;
+  background:
+    radial-gradient(circle at 86% 12%,rgba(67,197,139,.09),transparent 30%),
+    linear-gradient(145deg,rgba(8,23,27,.985),rgba(6,14,17,.97));
+  box-shadow:0 28px 70px rgba(0,0,0,.48),0 0 42px rgba(67,197,139,.07),inset 0 1px rgba(255,255,255,.025);
+}
+.pick-label{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-family:var(--mono);
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--stage-green);
+}
+.pick-dot{width:8px;height:8px;border-radius:50%;background:var(--stage-green);box-shadow:0 0 14px rgba(67,197,139,.75)}
+.pick-hero{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:17px}
+.pick-hero strong{
+  min-width:0;
+  margin:0;
+  font-size:clamp(46px,5vw,72px);
+  line-height:.86;
+  letter-spacing:-.055em;
+  color:#f7efe0;
+  text-shadow:0 7px 28px rgba(0,0,0,.45);
+}
+.pick-mark{
+  display:grid;
+  place-items:center;
+  flex:none;
+  width:68px;
+  height:68px;
+  border:1px solid rgba(201,152,67,.52);
+  border-radius:50%;
+  background:radial-gradient(circle at 34% 28%,#e65a48,#a72520 72%);
+  color:#fff5e8;
+  font-family:var(--mono);
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:-.04em;
+  box-shadow:0 12px 28px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.16);
+}
+.stage-v4 .verdict-company{
+  margin-top:17px;
+  color:var(--stage-green);
+  font-size:clamp(14px,1.25vw,18px);
+  font-weight:650;
+  line-height:1.3;
+}
+.pick-badges{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:17px;
+}
+.pick-badges span{
+  min-width:0;
+  padding:9px 10px;
+  border:1px solid rgba(255,255,255,.045);
+  border-radius:7px;
+  background:rgba(255,255,255,.035);
+  color:#d4dddc;
+  font-family:var(--mono);
+  font-size:8.5px;
+  line-height:1.2;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.pick-badges span:before{content:"•";margin-right:7px;color:var(--stage-gold-bright)}
+.pick-detail{
+  margin-top:12px;
+  padding-bottom:16px;
+  border-bottom:1px solid rgba(255,255,255,.075);
+  color:#75858a;
+  font-family:var(--mono);
+  font-size:8.5px;
+  line-height:1.5;
+}
+.stage-v4 .verdict-lock{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin-top:17px;
+  padding:0;
+  border:0;
+  color:#859398;
+}
+.stage-v4 .verdict-lock:before{display:none}
+.lock-icon{
+  display:grid;
+  place-items:center;
+  flex:none;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background:rgba(67,197,139,.1);
+  color:var(--stage-green);
+  font-size:14px;
+}
+.verdict-lock span:last-child{min-width:0}
+.verdict-lock b{
+  display:block;
+  color:var(--stage-green);
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.verdict-lock small{
+  display:block;
+  margin-top:4px;
+  color:#859398;
+  font-family:var(--mono);
+  font-size:8.5px;
+  line-height:1.45;
+}
+.verdict-card.has-result{animation:pickCardIn .5s cubic-bezier(.2,.8,.2,1)}
+@keyframes pickCardIn{0%{opacity:.58;transform:translateY(7px) scale(.985);box-shadow:0 10px 30px rgba(0,0,0,.35)}100%{opacity:1;transform:none}}
+
+.stage-v4 .controls{
+  grid-template-columns:minmax(300px,1.6fr) repeat(3,minmax(132px,.75fr)) repeat(3,minmax(120px,.66fr));
+  gap:9px;
+  padding:13px;
+  border-top:1px solid rgba(201,152,67,.2);
+  background:linear-gradient(180deg,#0d1518,#081013);
+}
+.stage-v4 .controls button{
+  min-width:0;
+  min-height:72px;
+  gap:12px;
+  padding:11px 13px;
+  border-radius:8px;
+  overflow:hidden;
+}
+.stage-v4 .controls button:not(.primary){box-shadow:inset 0 1px 0 rgba(255,255,255,.018)}
+.stage-v4 .controls .primary{padding-right:38px}
+.stage-v4 .controls .primary:after{
+  content:"›";
+  position:absolute;
+  right:17px;
+  top:50%;
+  transform:translateY(-52%);
+  color:rgba(255,255,255,.82);
+  font-size:25px;
+  font-weight:300;
+}
+.stage-v4 .control-icon{
+  width:38px;
+  height:38px;
+  border-radius:8px;
+  background:rgba(31,189,119,.11);
+  color:#35d38c;
+  font-size:16px;
+  box-shadow:inset 0 0 0 1px rgba(67,197,139,.04);
+}
+.stage-v4 .primary .control-icon{background:rgba(255,255,255,.11);color:#fff}
+.stage-v4 .control-copy b{font-size:9.5px;letter-spacing:.055em}
+.stage-v4 .control-copy small{
+  margin-top:5px;
+  max-width:100%;
+  color:#819095;
+  font-size:9px;
+  line-height:1.25;
+  white-space:normal;
+}
+.stage-v4 .primary .control-copy small{color:rgba(255,255,255,.76)}
+.stage-v4 .command-note{
+  position:relative;
+  padding:1px 18px 14px 42px;
+  text-align:left;
+  line-height:1.55;
+}
+.stage-v4 .command-note:before{
+  content:"i";
+  position:absolute;
+  left:18px;
+  top:0;
+  display:grid;
+  place-items:center;
+  width:15px;
+  height:15px;
+  border:1px solid #66777c;
+  border-radius:50%;
+  color:#8b999d;
+  font-family:var(--mono);
+  font-size:9px;
+}
+
+@media(max-width:1180px){
+  .stage-v4 .verdict-card{width:30%;right:1.5%;padding:19px}
+  .pick-mark{width:56px;height:56px}
+  .stage-v4 .controls{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .stage-v4 .controls .primary{grid-column:span 2}
+}
+@media(max-width:900px){
+  .stage-v4 .verdict-card{width:34%;top:6%;padding:16px}
+  .pick-badges{grid-template-columns:1fr}
+  .pick-hero strong{font-size:42px}
+  .pick-mark{width:48px;height:48px;font-size:10px}
+}
+@media(max-width:760px){
+  .stage-v4 .verdict-card{left:4%;right:auto;top:auto;bottom:4%;width:58%;padding:15px}
+  .pick-hero{margin-top:10px}.pick-hero strong{font-size:38px}.pick-mark{width:44px;height:44px}
+  .stage-v4 .verdict-company{margin-top:10px;font-size:13px}
+  .pick-badges{grid-template-columns:1fr 1fr;margin-top:10px;gap:6px}
+  .pick-badges span{padding:7px;font-size:7.5px}
+  .pick-detail{display:none}
+  .stage-v4 .verdict-lock{display:none}
+  .stage-v4 .controls{grid-template-columns:1fr 1fr}
+  .stage-v4 .controls .primary{grid-column:1/-1}
+  .stage-v4 .controls button{min-height:64px}
+}
