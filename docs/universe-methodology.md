@@ -17,7 +17,7 @@ The original 31-line watchlist has been expanded into a governed universe of **3
 | Global and thematic ETFs | 30 |
 | **Total** | **360** |
 
-The dataset covers **330 equities, 30 ETFs, 32 countries, 35 exchanges and 107 industry labels**.
+The governed workbook covers **330 equities, 30 ETFs, 32 countries, 35 exchanges and 107 industry labels**.
 
 ## Probability model
 
@@ -37,7 +37,7 @@ For this release, each instrument receives probability **1/360 per throw**.
 
 ## Identifier policy
 
-Ticker alone is not treated as a unique identifier. The master key is:
+Ticker alone is not treated as a unique identifier. The governed master key is:
 
 ```text
 MIC_CODE:TICKER
@@ -60,11 +60,11 @@ XHKG:0700
 This release is deliberately honest about its maturity:
 
 - Geographic and sector coverage are ready for research use.
-- Identifiers are structured and duplicate-checked.
+- Identifiers are structured and duplicate-checked in the governed workbook.
 - `market_cap_usd` is intentionally blank.
 - Market-cap buckets are preliminary design classifications.
 - ETF AUM and expense ratios still require issuer/API enrichment.
-- Every row retains source and quote-verification URLs.
+- Every governed workbook row retains source and quote-verification URLs.
 
 This avoids false precision while giving the application a production-oriented schema.
 
@@ -80,11 +80,18 @@ Before using the universe for live return tracking or investment research:
 6. Store the provider, timestamp and refresh result.
 7. Close the mid-, small- and micro-cap representation gap.
 
-## Files
+## Repository files
 
-- `data/global-360-app-v0.1.js` — compact browser-ready universe.
-- `scripts/validate-universe.js` — structural validation for Node.js or CI.
-- The governed Excel security master is maintained as the editorial source of truth.
+The concise source universe is split by region to keep reviews and future pull requests manageable:
+
+- `data/global360/source-north-america.json`
+- `data/global360/source-europe.json`
+- `data/global360/source-asia-pacific.json`
+- `data/global360/source-emerging-markets.json`
+- `data/global360/source-etfs.json`
+- `scripts/validate-universe.js` — validates record count, field structure, group/ticker uniqueness, sectors and size bands.
+
+The governed Excel security master remains the editorial source of truth. Browser-ready JSON and JavaScript exports are generated from that master during the build/integration step.
 
 ## Recommended application modes
 
