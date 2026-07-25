@@ -1,27 +1,74 @@
-# The Blindfolded Monkey — Random Pick Lab
+# Monkey 26 — Global Random Pick Lab
 
-A cinematic browser-based experiment inspired by Burton Malkiel’s blindfolded-monkey thought experiment.
+A cinematic, filterable implementation of Burton Malkiel's blindfolded-monkey thought experiment.
 
-The simulator reshuffles a 31-ticker watchlist before every throw, deals 25 hidden cards to a 5 × 5 wall, and selects one card using unbiased integer generation. Because each ticker has a 25/31 chance of being dealt and each dealt card has a 1/25 chance of being struck, every ticker has an exact selection probability of 1/31.
+Version 3 expands the original 31-ticker prototype into a governed **Global 360** universe and lets the user define what the monkey is allowed to hit.
 
-## Features
+## Version 3 capabilities
 
-- Cryptographic random-number generation through `crypto.getRandomValues`
-- Fisher–Yates shuffle before every throw
+- Governed 360-security source split across five reviewable regional files
+- Global, stocks-only, regional, ETF and innovation presets
+- Region, sector, size-band, instrument and text filters
+- Dynamic equal-probability proof for every valid active universe
+- Cryptographic Fisher–Yates shuffle before every throw
 - Rejection sampling to remove modulo bias
-- Single, 10-throw, and 100-throw simulation modes
-- Hidden-wall audit mode
-- Ticker-level chi-square fairness test and p-value
-- Normalised Shannon entropy
-- Expected-versus-observed ticker coverage
-- Regime distribution analysis
-- Exportable CSV ledger
-- Responsive desktop and mobile interface
-- No frameworks or external dependencies
+- Single, 10, 100 and 1,000-throw simulation modes
+- Dynamic expected coverage, entropy, chi-square and p-value analysis
+- Observed-versus-universe region, sector, size and instrument diagnostics
+- Audit mode for the current 25-card deal
+- Exportable experiment ledger
+- Responsive, dependency-free browser interface
+
+## Probability model
+
+For an active universe containing `N` eligible securities:
+
+```text
+P(selection) = P(dealt) × P(hit | dealt)
+             = 25/N × 1/25
+             = 1/N
+```
+
+Changing a preset or filter creates a new active universe and resets the experiment. The simulator requires at least 25 eligible securities.
+
+## Governed data sources
+
+The source universe is split by region so additions and corrections remain easy to review:
+
+```text
+data/global360/source-north-america.json
+data/global360/source-europe.json
+data/global360/source-asia-pacific.json
+data/global360/source-emerging-markets.json
+data/global360/source-etfs.json
+```
+
+Each record currently contains:
+
+```text
+ticker | name | sector | industry | size band
+```
+
+The browser data loader adds market-group, country, region, exchange, currency and instrument classifications. The governed Excel security master remains the editorial source of truth for future enrichment.
+
+## Application structure
+
+```text
+index.html       redirects to the current V3 release
+v3.html          semantic interface
+styles.css       core cinematic design system
+v3.css           Global 360 controls and analytics
+v3-data.js       source loading, parsing and presets
+v3-engine.js     randomness, probability and statistics
+v3-ui.js         filters, interactions, charts and CSV export
+scripts/validate-universe.js
+```
+
+The original `app.js` and `tickers.js` files are retained as historical prototype code.
 
 ## Run locally
 
-Open `index.html` directly in a modern browser, or serve the repository with any static web server.
+Because the universe is loaded through `fetch`, serve the repository through a local web server:
 
 ```bash
 python -m http.server 8000
@@ -29,13 +76,18 @@ python -m http.server 8000
 
 Then open `http://localhost:8000`.
 
-## Structure
+## Validate the Global 360 source
 
-- `index.html` — interface and semantic structure
-- `styles.css` — responsive visual system
-- `tickers.js` — 31-entry experiment dataset
-- `app.js` — simulation, analytics, interaction, and export logic
+```bash
+node scripts/validate-universe.js
+```
+
+The validator checks source-file availability, field structure, record count, mandatory values and group/ticker uniqueness.
+
+## Data maturity
+
+Global 360 is a curated beta research universe. Size bands are design classifications rather than live calculations. Stable identifiers, live market capitalisation, liquidity, corporate-action handling and return tracking remain planned enrichment layers.
 
 ## Disclaimer
 
-This is an educational statistical experiment and not investment advice.
+Monkey 26 is an educational statistical experiment. It does not provide investment advice, recommendations or live market data.
