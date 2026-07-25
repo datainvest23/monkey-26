@@ -1,58 +1,70 @@
 #!/usr/bin/env node
-/* Monkey 26 universe structural validator. */
+/* Monkey 26 Global 360 source validator. */
+const fs = require('fs');
 const path = require('path');
 
-const universePath = process.argv[2] || path.join(__dirname, '..', 'data', 'global-360-app-v0.1.js');
+const dataDir = process.argv[2] || path.join(__dirname, '..', 'data', 'global360');
+const files = [
+  'source-north-america.json',
+  'source-europe.json',
+  'source-asia-pacific.json',
+  'source-emerging-markets.json',
+  'source-etfs.json',
+];
 
-global.window = {};
-require(path.resolve(universePath));
-
-const payload = global.window.MONKEY26_UNIVERSES?.global360;
-if (!payload || !Array.isArray(payload.instruments)) {
-  console.error('FAIL: universe payload not found.');
-  process.exit(1);
-}
-
-const rows = payload.instruments;
-const required = ['id', 't', 'ps', 'n', 'ty', 'x', 'mic', 'country', 'region', 'ccy', 's', 'c', 'cap'];
+const rows = [];
 const errors = [];
-const ids = new Set();
-const providerSymbols = new Map();
+const groupCounts = {};
+const sizeBands = {};
+const sectors = {};
 
-for (const [index, row] of rows.entries()) {
-  for (const field of required) {
-    if (row[field] === undefined || row[field] === null || String(row[field]).trim() === '') {
-      errors.push(`row ${index + 1}: missing ${field}`);
+for (const file of files) {
+  const fullPath = path.join(dataDir, file);
+  if (!fs.existsSync(fullPath)) {
+    errors.push(`missing source file: ${file}`);
+    continue;
+  }
+  const groups = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
+  for (const [group, block] of Object.entries(groups)) {
+    const lines = String(block).split(/\r?\n/).filter(Boolean);
+    groupCounts[group] = lines.length;
+    for (const [index, line] of lines.entries()) {
+      const fields = line.split('|');
+      if (fields.length !== 5) {
+        errors.push(`${file}/${group} row ${index + 1}: expected 5 fields, found ${fields.length}`);
+        continue;
+      }
+      const [ticker, name, sector, industry, size] = fields.map(v => v.trim());
+      if (![ticker, name, sector, industry, size].every(Boolean)) {
+        errors.push(`${file}/${group} row ${index + 1}: blank mandatory field`);
+      }
+      rows.push({ file, group, ticker, name, sector, industry, size });
+      sizeBands[size] = (sizeBands[size] || 0) + 1;
+      sectors[sector] = (sectors[sector] || 0) + 1;
     }
   }
-  if (ids.has(row.id)) errors.push(`row ${index + 1}: duplicate id ${row.id}`);
-  ids.add(row.id);
-
-  const providerKey = `${row.ps}|${row.x}`;
-  if (providerSymbols.has(providerKey)) {
-    errors.push(`row ${index + 1}: duplicate provider symbol/exchange ${providerKey}`);
-  }
-  providerSymbols.set(providerKey, index + 1);
 }
 
-const counts = (field) => rows.reduce((acc, row) => {
-  const key = row[field] || '(blank)';
-  acc[key] = (acc[key] || 0) + 1;
-  return acc;
-}, {});
+const keys = new Set();
+for (const row of rows) {
+  const key = `${row.group}:${row.ticker}`;
+  if (keys.has(key)) errors.push(`duplicate group/ticker: ${key}`);
+  keys.add(key);
+}
+
+if (rows.length !== 360) errors.push(`expected 360 records; found ${rows.length}`);
 
 console.log(JSON.stringify({
-  version: payload.meta?.version,
+  version: 'G360-2026Q3-v0.1',
   records: rows.length,
-  uniqueIds: ids.size,
-  assetTypes: counts('ty'),
-  regions: counts('region'),
-  sectors: counts('s'),
-  sizeBands: counts('cap'),
+  uniqueGroupTickers: keys.size,
+  sourceFiles: files.length,
+  groups: groupCounts,
+  sectors,
+  sizeBands,
   errors: errors.length,
 }, null, 2));
 
-if (rows.length !== 360) errors.push(`expected 360 records; found ${rows.length}`);
 if (errors.length) {
   console.error('\nVALIDATION FAILED');
   for (const error of errors.slice(0, 100)) console.error(`- ${error}`);
