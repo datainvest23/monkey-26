@@ -7,10 +7,12 @@ function prepareTitle(){
   var title=document.querySelector('.hero h1');
   if(!title||title.classList.contains('hero-title-reveal'))return;
   title.classList.add('hero-title-reveal');
-  title.setAttribute('aria-label','Let the market meet the monkey.');
-  title.innerHTML='<span class="title-line"><span class="title-word" style="--word-index:0">Let</span> <span class="title-word" style="--word-index:1">the</span> <span class="title-word" style="--word-index:2">market</span></span><span class="title-line"><span class="title-word" style="--word-index:3">meet</span> <span class="title-word" style="--word-index:4">the</span> <em class="title-word" style="--word-index:5">monkey.</em><span class="title-caret" aria-hidden="true"></span></span>';
+  title.setAttribute('aria-label','Any monkey can beat the market.');
+  title.innerHTML='<span class="title-line"><span class="title-word" style="--word-index:0">Any</span> <em class="title-word" style="--word-index:1">Monkey</em></span><span class="title-line"><span class="title-word" style="--word-index:2">Can</span> <span class="title-word" style="--word-index:3">Beat</span> <span class="title-word" style="--word-index:4">The</span> <span class="title-word" style="--word-index:5">Market.</span><span class="title-caret" aria-hidden="true"></span></span>';
   var hero=document.querySelector('.hero');
   if(!hero)return;
+  var copy=hero.querySelector('.hero-copy');
+  if(copy)copy.innerHTML='A global random-pick <a class="malkiel-link" href="https://www.forbes.com/sites/rickferri/2012/12/20/any-monkey-can-beat-the-market/" target="_blank" rel="noopener noreferrer">experiment inspired by Burton Malkiel</a>. Choose the investable universe, reshuffle the financial newspaper before every throw, and test what unbiased selection actually looks like across markets, sectors and company sizes.';
   ['.kicker','.hero-copy','.hero-meta','.hero-actions','.fairness-card'].forEach(function(selector){
     var element=hero.querySelector(selector);
     if(element)element.classList.add('hero-intro-item');
@@ -28,7 +30,7 @@ function labelScene(element,id,label){
 function prepareScenes(){
   var hero=labelScene(document.querySelector('.hero'),'top','Introduction');
   var design=labelScene(document.querySelector('.universe-console'),'experiment-design','Universe builder');
-  var stage=labelScene(document.querySelector('.stage-shell'),'live-range','Live range');
+  var stage=labelScene(document.querySelector('.stage-shell'),'live-range','Market pages');
   var regularSections=[].slice.call(document.querySelectorAll('main > section.section:not(.methodology)'));
   var results=labelScene(regularSections[0],'experiment-results','Results');
   var ledger=labelScene(document.querySelector('.ledger-panel'),'draw-ledger','Draw ledger');
@@ -49,7 +51,7 @@ function prepareScenes(){
   rail.className='scene-rail';
   rail.setAttribute('aria-label','Page sections');
   var dots=[];
-  scenes.forEach(function(scene,index){
+  scenes.forEach(function(scene){
     var button=document.createElement('button');
     button.className='scene-dot';
     button.type='button';
