@@ -1,8 +1,10 @@
-(function(global){
+import { data as M } from "./data.js";
+import { engine as E } from "./engine.js";
+
 'use strict';
 var css=document.createElement('link');css.rel='stylesheet';css.href='v5.css';document.head.appendChild(css);
 var $=function(id){return document.getElementById(id);};
-var M=global.M26,E=M&&M.engine,range=$('range'),grid=$('grid'),flight=$('flight'),monkey=$('monkey');
+
 var reduced=global.matchMedia&&global.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function wait(ms){return new Promise(function(resolve){setTimeout(resolve,ms);});}
 function ensureResultCard(){var card=document.querySelector('.verdict-card');if(!card)return;card.innerHTML='<div class="pick-label"><span class="pick-dot"></span>Active pick</div><div class="pick-hero"><strong id="stage-verdict">—</strong><span class="pick-mark" id="stage-mark">M26</span></div><div class="verdict-company" id="stage-company">Ready for the next throw</div><div class="pick-badges"><span id="stage-country">Global universe</span><span id="stage-sector">All sectors</span><span id="stage-asset">Security</span><span id="stage-cap">All sizes</span></div><div class="pick-detail" id="stage-sub">Validated data · direct unbiased draw</div><div class="verdict-lock"><span class="lock-icon">▣</span><span><b>Selection locked</b><small id="stage-lock">The next outcome will be marked in the newspaper edition.</small></span></div>';}
@@ -18,5 +20,3 @@ global.addEventListener('m26:universe',function(event){resetCard(event.detail);}
 global.addEventListener('m26:result',function(event){populateCard(event.detail);animate();});
 var reset=$('reset');if(reset)reset.addEventListener('click',function(){setTimeout(function(){resetCard({count:E&&E.active?E.active.length:0});},0);});
 var audit=$('audit');if(audit){new MutationObserver(function(){if(audit.querySelector('.control-copy'))return;var close=/close/i.test(audit.textContent);audit.innerHTML='<span class="control-icon">▦</span><span class="control-copy"><b>'+(close?'Close audit':'Audit edition')+'</b><small>'+(close?'Return to clean view':'Show page and line data')+'</small></span>';}).observe(audit,{childList:true,subtree:true});}
-var layout=document.createElement('script');layout.src='v6.js';layout.onload=function(){var scenes=document.createElement('script');scenes.src='v7.js';scenes.onload=function(){var newspaper=document.createElement('script');newspaper.src='v8.js';newspaper.onload=function(){var heroPolish=document.createElement('script');heroPolish.src='v9.js';document.head.appendChild(heroPolish);};document.head.appendChild(newspaper);};document.head.appendChild(scenes);};document.head.appendChild(layout);
-})(window);

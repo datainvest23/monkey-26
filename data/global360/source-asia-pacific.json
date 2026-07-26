@@ -1,1 +1,541 @@
-{"japan":"7203|Toyota Motor|Consumer Discretionary|Automobile Manufacturers|Mega\n6758|Sony Group|Consumer Discretionary|Consumer Electronics|Mega\n9984|SoftBank Group|Communication Services|Wireless Telecommunication Services|Mega\n6861|Keyence|Information Technology|Electronic Equipment & Instruments|Mega\n8306|Mitsubishi UFJ Financial Group|Financials|Diversified Banks|Mega\n8316|Sumitomo Mitsui Financial Group|Financials|Diversified Banks|Mega\n8411|Mizuho Financial Group|Financials|Diversified Banks|Large\n6501|Hitachi|Industrials|Industrial Conglomerates|Mega\n8035|Tokyo Electron|Information Technology|Semiconductor Materials & Equipment|Mega\n6857|Advantest|Information Technology|Semiconductor Materials & Equipment|Large\n4063|Shin-Etsu Chemical|Materials|Specialty Chemicals|Mega\n6098|Recruit Holdings|Industrials|Human Resource & Employment Services|Mega\n7974|Nintendo|Communication Services|Interactive Home Entertainment|Mega\n9432|Nippon Telegraph and Telephone|Communication Services|Integrated Telecommunication Services|Mega\n9433|KDDI|Communication Services|Wireless Telecommunication Services|Large\n9983|Fast Retailing|Consumer Discretionary|Apparel Retail|Mega\n7267|Honda Motor|Consumer Discretionary|Automobile Manufacturers|Large\n7011|Mitsubishi Heavy Industries|Industrials|Aerospace & Defense|Mega\n8058|Mitsubishi Corporation|Industrials|Trading Companies & Distributors|Mega\n8001|Itochu|Industrials|Trading Companies & Distributors|Mega\n8031|Mitsui & Co.|Industrials|Trading Companies & Distributors|Mega\n8766|Tokio Marine Holdings|Financials|Property & Casualty Insurance|Mega\n4519|Chugai Pharmaceutical|Health Care|Pharmaceuticals|Large\n4568|Daiichi Sankyo|Health Care|Pharmaceuticals|Mega\n4502|Takeda Pharmaceutical|Health Care|Pharmaceuticals|Large\n7741|HOYA|Health Care|Health Care Supplies|Large\n6367|Daikin Industries|Industrials|Building Products|Large\n6954|Fanuc|Industrials|Industrial Machinery & Supplies|Large\n3382|Seven & i Holdings|Consumer Staples|Consumer Staples Merchandise Retail|Large\n2914|Japan Tobacco|Consumer Staples|Tobacco|Large","australia":"BHP|BHP Group|Materials|Diversified Metals & Mining|Mega\nCBA|Commonwealth Bank of Australia|Financials|Diversified Banks|Mega\nCSL|CSL|Health Care|Biotechnology|Mega\nNAB|National Australia Bank|Financials|Diversified Banks|Mega\nWBC|Westpac Banking Corporation|Financials|Diversified Banks|Large\nANZ|ANZ Group Holdings|Financials|Diversified Banks|Large\nFMG|Fortescue|Materials|Steel & Iron Ore|Large\nWES|Wesfarmers|Consumer Discretionary|Diversified Retail|Mega\nMQG|Macquarie Group|Financials|Diversified Capital Markets|Mega\nWDS|Woodside Energy|Energy|Oil & Gas Exploration & Production|Large\nTLS|Telstra Group|Communication Services|Integrated Telecommunication Services|Large\nGMG|Goodman Group|Real Estate|Industrial REITs|Mega\nRIO|Rio Tinto Limited|Materials|Diversified Metals & Mining|Mega\nALL|Aristocrat Leisure|Consumer Discretionary|Casinos & Gaming|Large\nTCL|Transurban Group|Industrials|Highways & Railtracks|Large","korea":"005930|Samsung Electronics|Information Technology|Technology Hardware, Storage & Peripherals|Mega\n000660|SK Hynix|Information Technology|Semiconductors|Mega\n005380|Hyundai Motor|Consumer Discretionary|Automobile Manufacturers|Mega\n000270|Kia|Consumer Discretionary|Automobile Manufacturers|Large\n035420|NAVER|Communication Services|Interactive Media & Services|Large\n035720|Kakao|Communication Services|Interactive Media & Services|Large\n051910|LG Chem|Materials|Specialty Chemicals|Large\n006400|Samsung SDI|Industrials|Electrical Components & Equipment|Large\n105560|KB Financial Group|Financials|Diversified Banks|Large\n207940|Samsung Biologics|Health Care|Biotechnology|Mega","hongkong":"0005|HSBC Holdings Hong Kong|Financials|Diversified Banks|Mega\n1299|AIA Group|Financials|Life & Health Insurance|Mega\n0388|Hong Kong Exchanges and Clearing|Financials|Financial Exchanges & Data|Large\n0016|Sun Hung Kai Properties|Real Estate|Diversified Real Estate Activities|Large\n0011|Hang Seng Bank|Financials|Diversified Banks|Large\n0002|CLP Holdings|Utilities|Electric Utilities|Large\n0669|Techtronic Industries|Industrials|Industrial Machinery & Supplies|Large\n0066|MTR Corporation|Industrials|Passenger Ground Transportation|Large","singapore":"D05|DBS Group Holdings|Financials|Diversified Banks|Mega\nO39|Oversea-Chinese Banking Corporation|Financials|Diversified Banks|Large\nU11|United Overseas Bank|Financials|Diversified Banks|Large\nC6L|Singapore Airlines|Industrials|Passenger Airlines|Large\nZ74|Singapore Telecommunications|Communication Services|Integrated Telecommunication Services|Large","newzealand":"FPH|Fisher & Paykel Healthcare|Health Care|Health Care Equipment|Large\nSPK|Spark New Zealand|Communication Services|Integrated Telecommunication Services|Mid\nMFT|Mainfreight|Industrials|Air Freight & Logistics|Mid","israel":"TEVA|Teva Pharmaceutical Industries|Health Care|Pharmaceuticals|Large\nCHKP|Check Point Software Technologies|Information Technology|Systems Software & Cybersecurity|Large\nNICE|NICE|Information Technology|Application Software|Large\nICL|ICL Group|Materials|Fertilizers & Agricultural Chemicals|Mid"}
+{
+  "japan": [
+    {
+      "ticker": "7203",
+      "name": "Toyota Motor",
+      "sector": "Consumer Discretionary",
+      "industry": "Automobile Manufacturers",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "6758",
+      "name": "Sony Group",
+      "sector": "Consumer Discretionary",
+      "industry": "Consumer Electronics",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "9984",
+      "name": "SoftBank Group",
+      "sector": "Communication Services",
+      "industry": "Wireless Telecommunication Services",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "6861",
+      "name": "Keyence",
+      "sector": "Information Technology",
+      "industry": "Electronic Equipment & Instruments",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "8306",
+      "name": "Mitsubishi UFJ Financial Group",
+      "sector": "Financials",
+      "industry": "Diversified Banks",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "8316",
+      "name": "Sumitomo Mitsui Financial Group",
+      "sector": "Financials",
+      "industry": "Diversified Banks",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "8411",
+      "name": "Mizuho Financial Group",
+      "sector": "Financials",
+      "industry": "Diversified Banks",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "6501",
+      "name": "Hitachi",
+      "sector": "Industrials",
+      "industry": "Industrial Conglomerates",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "8035",
+      "name": "Tokyo Electron",
+      "sector": "Information Technology",
+      "industry": "Semiconductor Materials & Equipment",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "6857",
+      "name": "Advantest",
+      "sector": "Information Technology",
+      "industry": "Semiconductor Materials & Equipment",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "4063",
+      "name": "Shin-Etsu Chemical",
+      "sector": "Materials",
+      "industry": "Specialty Chemicals",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "6098",
+      "name": "Recruit Holdings",
+      "sector": "Industrials",
+      "industry": "Human Resource & Employment Services",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "7974",
+      "name": "Nintendo",
+      "sector": "Communication Services",
+      "industry": "Interactive Home Entertainment",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "9432",
+      "name": "Nippon Telegraph and Telephone",
+      "sector": "Communication Services",
+      "industry": "Integrated Telecommunication Services",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "9433",
+      "name": "KDDI",
+      "sector": "Communication Services",
+      "industry": "Wireless Telecommunication Services",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "9983",
+      "name": "Fast Retailing",
+      "sector": "Consumer Discretionary",
+      "industry": "Apparel Retail",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "7267",
+      "name": "Honda Motor",
+      "sector": "Consumer Discretionary",
+      "industry": "Automobile Manufacturers",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "7011",
+      "name": "Mitsubishi Heavy Industries",
+      "sector": "Industrials",
+      "industry": "Aerospace & Defense",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "8058",
+      "name": "Mitsubishi Corporation",
+      "sector": "Industrials",
+      "industry": "Trading Companies & Distributors",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "8001",
+      "name": "Itochu",
+      "sector": "Industrials",
+      "industry": "Trading Companies & Distributors",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "8031",
+      "name": "Mitsui & Co.",
+      "sector": "Industrials",
+      "industry": "Trading Companies & Distributors",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "8766",
+      "name": "Tokio Marine Holdings",
+      "sector": "Financials",
+      "industry": "Property & Casualty Insurance",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "4519",
+      "name": "Chugai Pharmaceutical",
+      "sector": "Health Care",
+      "industry": "Pharmaceuticals",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "4568",
+      "name": "Daiichi Sankyo",
+      "sector": "Health Care",
+      "industry": "Pharmaceuticals",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "4502",
+      "name": "Takeda Pharmaceutical",
+      "sector": "Health Care",
+      "industry": "Pharmaceuticals",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "7741",
+      "name": "HOYA",
+      "sector": "Health Care",
+      "industry": "Health Care Supplies",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "6367",
+      "name": "Daikin Industries",
+      "sector": "Industrials",
+      "industry": "Building Products",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "6954",
+      "name": "Fanuc",
+      "sector": "Industrials",
+      "industry": "Industrial Machinery & Supplies",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "3382",
+      "name": "Seven & i Holdings",
+      "sector": "Consumer Staples",
+      "industry": "Consumer Staples Merchandise Retail",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "2914",
+      "name": "Japan Tobacco",
+      "sector": "Consumer Staples",
+      "industry": "Tobacco",
+      "size_band": "Large"
+    }
+  ],
+  "australia": [
+    {
+      "ticker": "BHP",
+      "name": "BHP Group",
+      "sector": "Materials",
+      "industry": "Diversified Metals & Mining",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "CBA",
+      "name": "Commonwealth Bank of Australia",
+      "sector": "Financials",
+      "industry": "Diversified Banks",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "CSL",
+      "name": "CSL",
+      "sector": "Health Care",
+      "industry": "Biotechnology",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "NAB",
+      "name": "National Australia Bank",
+      "sector": "Financials",
+      "industry": "Diversified Banks",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "WBC",
+      "name": "Westpac Banking Corporation",
+      "sector": "Financials",
+      "industry": "Diversified Banks",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "ANZ",
+      "name": "ANZ Group Holdings",
+      "sector": "Financials",
+      "industry": "Diversified Banks",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "FMG",
+      "name": "Fortescue",
+      "sector": "Materials",
+      "industry": "Steel & Iron Ore",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "WES",
+      "name": "Wesfarmers",
+      "sector": "Consumer Discretionary",
+      "industry": "Diversified Retail",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "MQG",
+      "name": "Macquarie Group",
+      "sector": "Financials",
+      "industry": "Diversified Capital Markets",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "WDS",
+      "name": "Woodside Energy",
+      "sector": "Energy",
+      "industry": "Oil & Gas Exploration & Production",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "TLS",
+      "name": "Telstra Group",
+      "sector": "Communication Services",
+      "industry": "Integrated Telecommunication Services",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "GMG",
+      "name": "Goodman Group",
+      "sector": "Real Estate",
+      "industry": "Industrial REITs",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "RIO",
+      "name": "Rio Tinto Limited",
+      "sector": "Materials",
+      "industry": "Diversified Metals & Mining",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "ALL",
+      "name": "Aristocrat Leisure",
+      "sector": "Consumer Discretionary",
+      "industry": "Casinos & Gaming",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "TCL",
+      "name": "Transurban Group",
+      "sector": "Industrials",
+      "industry": "Highways & Railtracks",
+      "size_band": "Large"
+    }
+  ],
+  "korea": [
+    {
+      "ticker": "005930",
+      "name": "Samsung Electronics",
+      "sector": "Information Technology",
+      "industry": "Technology Hardware, Storage & Peripherals",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "000660",
+      "name": "SK Hynix",
+      "sector": "Information Technology",
+      "industry": "Semiconductors",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "005380",
+      "name": "Hyundai Motor",
+      "sector": "Consumer Discretionary",
+      "industry": "Automobile Manufacturers",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "000270",
+      "name": "Kia",
+      "sector": "Consumer Discretionary",
+      "industry": "Automobile Manufacturers",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "035420",
+      "name": "NAVER",
+      "sector": "Communication Services",
+      "industry": "Interactive Media & Services",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "035720",
+      "name": "Kakao",
+      "sector": "Communication Services",
+      "industry": "Interactive Media & Services",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "051910",
+      "name": "LG Chem",
+      "sector": "Materials",
+      "industry": "Specialty Chemicals",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "006400",
+      "name": "Samsung SDI",
+      "sector": "Industrials",
+      "industry": "Electrical Components & Equipment",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "105560",
+      "name": "KB Financial Group",
+      "sector": "Financials",
+      "industry": "Diversified Banks",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "207940",
+      "name": "Samsung Biologics",
+      "sector": "Health Care",
+      "industry": "Biotechnology",
+      "size_band": "Mega"
+    }
+  ],
+  "hongkong": [
+    {
+      "ticker": "0005",
+      "name": "HSBC Holdings Hong Kong",
+      "sector": "Financials",
+      "industry": "Diversified Banks",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "1299",
+      "name": "AIA Group",
+      "sector": "Financials",
+      "industry": "Life & Health Insurance",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "0388",
+      "name": "Hong Kong Exchanges and Clearing",
+      "sector": "Financials",
+      "industry": "Financial Exchanges & Data",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "0016",
+      "name": "Sun Hung Kai Properties",
+      "sector": "Real Estate",
+      "industry": "Diversified Real Estate Activities",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "0011",
+      "name": "Hang Seng Bank",
+      "sector": "Financials",
+      "industry": "Diversified Banks",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "0002",
+      "name": "CLP Holdings",
+      "sector": "Utilities",
+      "industry": "Electric Utilities",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "0669",
+      "name": "Techtronic Industries",
+      "sector": "Industrials",
+      "industry": "Industrial Machinery & Supplies",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "0066",
+      "name": "MTR Corporation",
+      "sector": "Industrials",
+      "industry": "Passenger Ground Transportation",
+      "size_band": "Large"
+    }
+  ],
+  "singapore": [
+    {
+      "ticker": "D05",
+      "name": "DBS Group Holdings",
+      "sector": "Financials",
+      "industry": "Diversified Banks",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "O39",
+      "name": "Oversea-Chinese Banking Corporation",
+      "sector": "Financials",
+      "industry": "Diversified Banks",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "U11",
+      "name": "United Overseas Bank",
+      "sector": "Financials",
+      "industry": "Diversified Banks",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "C6L",
+      "name": "Singapore Airlines",
+      "sector": "Industrials",
+      "industry": "Passenger Airlines",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "Z74",
+      "name": "Singapore Telecommunications",
+      "sector": "Communication Services",
+      "industry": "Integrated Telecommunication Services",
+      "size_band": "Large"
+    }
+  ],
+  "newzealand": [
+    {
+      "ticker": "FPH",
+      "name": "Fisher & Paykel Healthcare",
+      "sector": "Health Care",
+      "industry": "Health Care Equipment",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "SPK",
+      "name": "Spark New Zealand",
+      "sector": "Communication Services",
+      "industry": "Integrated Telecommunication Services",
+      "size_band": "Mid"
+    },
+    {
+      "ticker": "MFT",
+      "name": "Mainfreight",
+      "sector": "Industrials",
+      "industry": "Air Freight & Logistics",
+      "size_band": "Mid"
+    }
+  ],
+  "israel": [
+    {
+      "ticker": "TEVA",
+      "name": "Teva Pharmaceutical Industries",
+      "sector": "Health Care",
+      "industry": "Pharmaceuticals",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "CHKP",
+      "name": "Check Point Software Technologies",
+      "sector": "Information Technology",
+      "industry": "Systems Software & Cybersecurity",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "NICE",
+      "name": "NICE",
+      "sector": "Information Technology",
+      "industry": "Application Software",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "ICL",
+      "name": "ICL Group",
+      "sector": "Materials",
+      "industry": "Fertilizers & Agricultural Chemicals",
+      "size_band": "Mid"
+    }
+  ]
+}

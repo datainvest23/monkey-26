@@ -1,1 +1,846 @@
-{"us":"KLAC|KLA Corporation|Information Technology|Semiconductor Materials & Equipment|Large\nNVTS|Navitas Semiconductor|Information Technology|Semiconductors|Small\nACMR|ACM Research|Information Technology|Semiconductor Materials & Equipment|Mid\nAMBA|Ambarella|Information Technology|Semiconductors|Mid\nNVDA|NVIDIA Corporation|Information Technology|Semiconductors|Mega\nAMAT|Applied Materials|Information Technology|Semiconductor Materials & Equipment|Mega\nTTMI|TTM Technologies|Information Technology|Electronic Components|Mid\nJBL|Jabil|Information Technology|Electronic Manufacturing Services|Large\nCGNX|Cognex Corporation|Information Technology|Electronic Equipment & Instruments|Mid\nPANW|Palo Alto Networks|Information Technology|Systems Software & Cybersecurity|Mega\nTWLO|Twilio|Information Technology|Application Software|Mid\nDCO|Ducommun|Industrials|Aerospace & Defense|Small\nHEI|HEICO Corporation|Industrials|Aerospace & Defense|Large\nCVU|CPI Aerostructures|Industrials|Aerospace & Defense|Micro\nKTOS|Kratos Defense & Security Solutions|Industrials|Aerospace & Defense|Mid\nLUNR|Intuitive Machines|Industrials|Aerospace & Defense|Small\nGE|GE Aerospace|Industrials|Aerospace & Defense|Mega\nPOWL|Powell Industries|Industrials|Electrical Components & Equipment|Mid\nUBER|Uber Technologies|Industrials|Passenger Ground Transportation|Mega\nSTLD|Steel Dynamics|Materials|Steel|Large\nLEU|Centrus Energy|Energy|Nuclear Fuel|Mid\nVKTX|Viking Therapeutics|Health Care|Biotechnology|Mid\nTEM|Tempus AI|Health Care|Health Care Technology|Mid\nTSLA|Tesla|Consumer Discretionary|Automobile Manufacturers|Mega\nAAPL|Apple|Information Technology|Technology Hardware, Storage & Peripherals|Mega\nMSFT|Microsoft|Information Technology|Systems Software|Mega\nAMZN|Amazon|Consumer Discretionary|Broadline Retail|Mega\nGOOGL|Alphabet Class A|Communication Services|Interactive Media & Services|Mega\nMETA|Meta Platforms|Communication Services|Interactive Media & Services|Mega\nAVGO|Broadcom|Information Technology|Semiconductors|Mega\nAMD|Advanced Micro Devices|Information Technology|Semiconductors|Mega\nORCL|Oracle|Information Technology|Systems Software|Mega\nCRM|Salesforce|Information Technology|Application Software|Mega\nNOW|ServiceNow|Information Technology|Application Software|Mega\nPLTR|Palantir Technologies|Information Technology|Application Software|Mega\nANET|Arista Networks|Information Technology|Communications Equipment|Large\nCDNS|Cadence Design Systems|Information Technology|Application Software|Large\nSNPS|Synopsys|Information Technology|Application Software|Large\nMU|Micron Technology|Information Technology|Semiconductors|Large\nINTC|Intel|Information Technology|Semiconductors|Large\nQCOM|Qualcomm|Information Technology|Semiconductors|Mega\nTXN|Texas Instruments|Information Technology|Semiconductors|Mega\nIBM|IBM|Information Technology|IT Consulting & Other Services|Mega\nACN|Accenture|Information Technology|IT Consulting & Other Services|Mega\nJPM|JPMorgan Chase|Financials|Diversified Banks|Mega\nBAC|Bank of America|Financials|Diversified Banks|Mega\nGS|Goldman Sachs|Financials|Investment Banking & Brokerage|Mega\nMS|Morgan Stanley|Financials|Investment Banking & Brokerage|Mega\nV|Visa|Financials|Transaction & Payment Processing Services|Mega\nMA|Mastercard|Financials|Transaction & Payment Processing Services|Mega\nAXP|American Express|Financials|Consumer Finance|Mega\nBLK|BlackRock|Financials|Asset Management & Custody Banks|Mega\nSCHW|Charles Schwab|Financials|Investment Banking & Brokerage|Large\nCOIN|Coinbase Global|Financials|Financial Exchanges & Data|Large\nLLY|Eli Lilly|Health Care|Pharmaceuticals|Mega\nJNJ|Johnson & Johnson|Health Care|Pharmaceuticals|Mega\nUNH|UnitedHealth Group|Health Care|Managed Health Care|Mega\nABBV|AbbVie|Health Care|Biotechnology|Mega\nMRK|Merck & Co.|Health Care|Pharmaceuticals|Mega\nTMO|Thermo Fisher Scientific|Health Care|Life Sciences Tools & Services|Mega\nISRG|Intuitive Surgical|Health Care|Health Care Equipment|Mega\nBSX|Boston Scientific|Health Care|Health Care Equipment|Large\nGILD|Gilead Sciences|Health Care|Biotechnology|Large\nREGN|Regeneron Pharmaceuticals|Health Care|Biotechnology|Large\nCAT|Caterpillar|Industrials|Construction Machinery|Mega\nDE|Deere & Company|Industrials|Agricultural Machinery|Large\nHON|Honeywell International|Industrials|Industrial Conglomerates|Mega\nRTX|RTX Corporation|Industrials|Aerospace & Defense|Mega\nLMT|Lockheed Martin|Industrials|Aerospace & Defense|Mega\nNOC|Northrop Grumman|Industrials|Aerospace & Defense|Large\nETN|Eaton|Industrials|Electrical Components & Equipment|Mega\nCARR|Carrier Global|Industrials|Building Products|Large\nURI|United Rentals|Industrials|Trading Companies & Distributors|Large\nWM|Waste Management|Industrials|Environmental & Facilities Services|Mega\nXOM|Exxon Mobil|Energy|Integrated Oil & Gas|Mega\nCVX|Chevron|Energy|Integrated Oil & Gas|Mega\nCOP|ConocoPhillips|Energy|Oil & Gas Exploration & Production|Mega\nSLB|SLB|Energy|Oil & Gas Equipment & Services|Large\nOXY|Occidental Petroleum|Energy|Oil & Gas Exploration & Production|Large\nFANG|Diamondback Energy|Energy|Oil & Gas Exploration & Production|Large\nNEE|NextEra Energy|Utilities|Electric Utilities|Mega\nCEG|Constellation Energy|Utilities|Electric Utilities|Large\nWMT|Walmart|Consumer Staples|Consumer Staples Merchandise Retail|Mega\nCOST|Costco Wholesale|Consumer Staples|Consumer Staples Merchandise Retail|Mega\nPG|Procter & Gamble|Consumer Staples|Household Products|Mega\nKO|Coca-Cola|Consumer Staples|Soft Drinks & Non-alcoholic Beverages|Mega\nPEP|PepsiCo|Consumer Staples|Soft Drinks & Non-alcoholic Beverages|Mega\nMCD|McDonald's|Consumer Discretionary|Restaurants|Mega\nHD|Home Depot|Consumer Discretionary|Home Improvement Retail|Mega\nLOW|Lowe's|Consumer Discretionary|Home Improvement Retail|Large\nNKE|Nike|Consumer Discretionary|Apparel, Accessories & Luxury Goods|Large\nAMT|American Tower|Real Estate|Telecom Tower REITs|Mega\nPLD|Prologis|Real Estate|Industrial REITs|Mega\nEQIX|Equinix|Real Estate|Data Center REITs|Large\nO|Realty Income|Real Estate|Retail REITs|Large\nSPG|Simon Property Group|Real Estate|Retail REITs|Large\nFCX|Freeport-McMoRan|Materials|Copper|Large\nNUE|Nucor|Materials|Steel|Large\nAPD|Air Products and Chemicals|Materials|Industrial Gases|Mega\nLIN|Linde|Materials|Industrial Gases|Mega","canada":"SHOP|Shopify|Information Technology|Application Software|Mega\nRY|Royal Bank of Canada|Financials|Diversified Banks|Mega\nTD|Toronto-Dominion Bank|Financials|Diversified Banks|Mega\nBNS|Bank of Nova Scotia|Financials|Diversified Banks|Large\nBMO|Bank of Montreal|Financials|Diversified Banks|Large\nCM|Canadian Imperial Bank of Commerce|Financials|Diversified Banks|Large\nENB|Enbridge|Energy|Oil & Gas Storage & Transportation|Mega\nCNQ|Canadian Natural Resources|Energy|Oil & Gas Exploration & Production|Mega\nSU|Suncor Energy|Energy|Integrated Oil & Gas|Large\nCVE|Cenovus Energy|Energy|Integrated Oil & Gas|Large\nTRP|TC Energy|Energy|Oil & Gas Storage & Transportation|Large\nCNR|Canadian National Railway|Industrials|Rail Transportation|Mega\nCP|Canadian Pacific Kansas City|Industrials|Rail Transportation|Mega\nCSU|Constellation Software|Information Technology|Application Software|Large\nBN|Brookfield Corporation|Financials|Multi-Sector Holdings|Large\nBAM|Brookfield Asset Management|Financials|Asset Management & Custody Banks|Large\nABX|Barrick Gold|Materials|Gold|Large\nNTR|Nutrien|Materials|Fertilizers & Agricultural Chemicals|Large\nWCN|Waste Connections|Industrials|Environmental & Facilities Services|Large\nATD|Alimentation Couche-Tard|Consumer Staples|Consumer Staples Merchandise Retail|Large"}
+{
+  "us": [
+    {
+      "ticker": "KLAC",
+      "name": "KLA Corporation",
+      "sector": "Information Technology",
+      "industry": "Semiconductor Materials & Equipment",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "NVTS",
+      "name": "Navitas Semiconductor",
+      "sector": "Information Technology",
+      "industry": "Semiconductors",
+      "size_band": "Small"
+    },
+    {
+      "ticker": "ACMR",
+      "name": "ACM Research",
+      "sector": "Information Technology",
+      "industry": "Semiconductor Materials & Equipment",
+      "size_band": "Mid"
+    },
+    {
+      "ticker": "AMBA",
+      "name": "Ambarella",
+      "sector": "Information Technology",
+      "industry": "Semiconductors",
+      "size_band": "Mid"
+    },
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA Corporation",
+      "sector": "Information Technology",
+      "industry": "Semiconductors",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "AMAT",
+      "name": "Applied Materials",
+      "sector": "Information Technology",
+      "industry": "Semiconductor Materials & Equipment",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "TTMI",
+      "name": "TTM Technologies",
+      "sector": "Information Technology",
+      "industry": "Electronic Components",
+      "size_band": "Mid"
+    },
+    {
+      "ticker": "JBL",
+      "name": "Jabil",
+      "sector": "Information Technology",
+      "industry": "Electronic Manufacturing Services",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "CGNX",
+      "name": "Cognex Corporation",
+      "sector": "Information Technology",
+      "industry": "Electronic Equipment & Instruments",
+      "size_band": "Mid"
+    },
+    {
+      "ticker": "PANW",
+      "name": "Palo Alto Networks",
+      "sector": "Information Technology",
+      "industry": "Systems Software & Cybersecurity",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "TWLO",
+      "name": "Twilio",
+      "sector": "Information Technology",
+      "industry": "Application Software",
+      "size_band": "Mid"
+    },
+    {
+      "ticker": "DCO",
+      "name": "Ducommun",
+      "sector": "Industrials",
+      "industry": "Aerospace & Defense",
+      "size_band": "Small"
+    },
+    {
+      "ticker": "HEI",
+      "name": "HEICO Corporation",
+      "sector": "Industrials",
+      "industry": "Aerospace & Defense",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "CVU",
+      "name": "CPI Aerostructures",
+      "sector": "Industrials",
+      "industry": "Aerospace & Defense",
+      "size_band": "Micro"
+    },
+    {
+      "ticker": "KTOS",
+      "name": "Kratos Defense & Security Solutions",
+      "sector": "Industrials",
+      "industry": "Aerospace & Defense",
+      "size_band": "Mid"
+    },
+    {
+      "ticker": "LUNR",
+      "name": "Intuitive Machines",
+      "sector": "Industrials",
+      "industry": "Aerospace & Defense",
+      "size_band": "Small"
+    },
+    {
+      "ticker": "GE",
+      "name": "GE Aerospace",
+      "sector": "Industrials",
+      "industry": "Aerospace & Defense",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "POWL",
+      "name": "Powell Industries",
+      "sector": "Industrials",
+      "industry": "Electrical Components & Equipment",
+      "size_band": "Mid"
+    },
+    {
+      "ticker": "UBER",
+      "name": "Uber Technologies",
+      "sector": "Industrials",
+      "industry": "Passenger Ground Transportation",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "STLD",
+      "name": "Steel Dynamics",
+      "sector": "Materials",
+      "industry": "Steel",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "LEU",
+      "name": "Centrus Energy",
+      "sector": "Energy",
+      "industry": "Nuclear Fuel",
+      "size_band": "Mid"
+    },
+    {
+      "ticker": "VKTX",
+      "name": "Viking Therapeutics",
+      "sector": "Health Care",
+      "industry": "Biotechnology",
+      "size_band": "Mid"
+    },
+    {
+      "ticker": "TEM",
+      "name": "Tempus AI",
+      "sector": "Health Care",
+      "industry": "Health Care Technology",
+      "size_band": "Mid"
+    },
+    {
+      "ticker": "TSLA",
+      "name": "Tesla",
+      "sector": "Consumer Discretionary",
+      "industry": "Automobile Manufacturers",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "AAPL",
+      "name": "Apple",
+      "sector": "Information Technology",
+      "industry": "Technology Hardware, Storage & Peripherals",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "MSFT",
+      "name": "Microsoft",
+      "sector": "Information Technology",
+      "industry": "Systems Software",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "AMZN",
+      "name": "Amazon",
+      "sector": "Consumer Discretionary",
+      "industry": "Broadline Retail",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "GOOGL",
+      "name": "Alphabet Class A",
+      "sector": "Communication Services",
+      "industry": "Interactive Media & Services",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "META",
+      "name": "Meta Platforms",
+      "sector": "Communication Services",
+      "industry": "Interactive Media & Services",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "AVGO",
+      "name": "Broadcom",
+      "sector": "Information Technology",
+      "industry": "Semiconductors",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "AMD",
+      "name": "Advanced Micro Devices",
+      "sector": "Information Technology",
+      "industry": "Semiconductors",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "ORCL",
+      "name": "Oracle",
+      "sector": "Information Technology",
+      "industry": "Systems Software",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "CRM",
+      "name": "Salesforce",
+      "sector": "Information Technology",
+      "industry": "Application Software",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "NOW",
+      "name": "ServiceNow",
+      "sector": "Information Technology",
+      "industry": "Application Software",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "PLTR",
+      "name": "Palantir Technologies",
+      "sector": "Information Technology",
+      "industry": "Application Software",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "ANET",
+      "name": "Arista Networks",
+      "sector": "Information Technology",
+      "industry": "Communications Equipment",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "CDNS",
+      "name": "Cadence Design Systems",
+      "sector": "Information Technology",
+      "industry": "Application Software",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "SNPS",
+      "name": "Synopsys",
+      "sector": "Information Technology",
+      "industry": "Application Software",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "MU",
+      "name": "Micron Technology",
+      "sector": "Information Technology",
+      "industry": "Semiconductors",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "INTC",
+      "name": "Intel",
+      "sector": "Information Technology",
+      "industry": "Semiconductors",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "QCOM",
+      "name": "Qualcomm",
+      "sector": "Information Technology",
+      "industry": "Semiconductors",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "TXN",
+      "name": "Texas Instruments",
+      "sector": "Information Technology",
+      "industry": "Semiconductors",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "IBM",
+      "name": "IBM",
+      "sector": "Information Technology",
+      "industry": "IT Consulting & Other Services",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "ACN",
+      "name": "Accenture",
+      "sector": "Information Technology",
+      "industry": "IT Consulting & Other Services",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "JPM",
+      "name": "JPMorgan Chase",
+      "sector": "Financials",
+      "industry": "Diversified Banks",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "BAC",
+      "name": "Bank of America",
+      "sector": "Financials",
+      "industry": "Diversified Banks",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "GS",
+      "name": "Goldman Sachs",
+      "sector": "Financials",
+      "industry": "Investment Banking & Brokerage",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "MS",
+      "name": "Morgan Stanley",
+      "sector": "Financials",
+      "industry": "Investment Banking & Brokerage",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "V",
+      "name": "Visa",
+      "sector": "Financials",
+      "industry": "Transaction & Payment Processing Services",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "MA",
+      "name": "Mastercard",
+      "sector": "Financials",
+      "industry": "Transaction & Payment Processing Services",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "AXP",
+      "name": "American Express",
+      "sector": "Financials",
+      "industry": "Consumer Finance",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "BLK",
+      "name": "BlackRock",
+      "sector": "Financials",
+      "industry": "Asset Management & Custody Banks",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "SCHW",
+      "name": "Charles Schwab",
+      "sector": "Financials",
+      "industry": "Investment Banking & Brokerage",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "COIN",
+      "name": "Coinbase Global",
+      "sector": "Financials",
+      "industry": "Financial Exchanges & Data",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "LLY",
+      "name": "Eli Lilly",
+      "sector": "Health Care",
+      "industry": "Pharmaceuticals",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "JNJ",
+      "name": "Johnson & Johnson",
+      "sector": "Health Care",
+      "industry": "Pharmaceuticals",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "UNH",
+      "name": "UnitedHealth Group",
+      "sector": "Health Care",
+      "industry": "Managed Health Care",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "ABBV",
+      "name": "AbbVie",
+      "sector": "Health Care",
+      "industry": "Biotechnology",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "MRK",
+      "name": "Merck & Co.",
+      "sector": "Health Care",
+      "industry": "Pharmaceuticals",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "TMO",
+      "name": "Thermo Fisher Scientific",
+      "sector": "Health Care",
+      "industry": "Life Sciences Tools & Services",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "ISRG",
+      "name": "Intuitive Surgical",
+      "sector": "Health Care",
+      "industry": "Health Care Equipment",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "BSX",
+      "name": "Boston Scientific",
+      "sector": "Health Care",
+      "industry": "Health Care Equipment",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "GILD",
+      "name": "Gilead Sciences",
+      "sector": "Health Care",
+      "industry": "Biotechnology",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "REGN",
+      "name": "Regeneron Pharmaceuticals",
+      "sector": "Health Care",
+      "industry": "Biotechnology",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "CAT",
+      "name": "Caterpillar",
+      "sector": "Industrials",
+      "industry": "Construction Machinery",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "DE",
+      "name": "Deere & Company",
+      "sector": "Industrials",
+      "industry": "Agricultural Machinery",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "HON",
+      "name": "Honeywell International",
+      "sector": "Industrials",
+      "industry": "Industrial Conglomerates",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "RTX",
+      "name": "RTX Corporation",
+      "sector": "Industrials",
+      "industry": "Aerospace & Defense",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "LMT",
+      "name": "Lockheed Martin",
+      "sector": "Industrials",
+      "industry": "Aerospace & Defense",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "NOC",
+      "name": "Northrop Grumman",
+      "sector": "Industrials",
+      "industry": "Aerospace & Defense",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "ETN",
+      "name": "Eaton",
+      "sector": "Industrials",
+      "industry": "Electrical Components & Equipment",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "CARR",
+      "name": "Carrier Global",
+      "sector": "Industrials",
+      "industry": "Building Products",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "URI",
+      "name": "United Rentals",
+      "sector": "Industrials",
+      "industry": "Trading Companies & Distributors",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "WM",
+      "name": "Waste Management",
+      "sector": "Industrials",
+      "industry": "Environmental & Facilities Services",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "XOM",
+      "name": "Exxon Mobil",
+      "sector": "Energy",
+      "industry": "Integrated Oil & Gas",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "CVX",
+      "name": "Chevron",
+      "sector": "Energy",
+      "industry": "Integrated Oil & Gas",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "COP",
+      "name": "ConocoPhillips",
+      "sector": "Energy",
+      "industry": "Oil & Gas Exploration & Production",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "SLB",
+      "name": "SLB",
+      "sector": "Energy",
+      "industry": "Oil & Gas Equipment & Services",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "OXY",
+      "name": "Occidental Petroleum",
+      "sector": "Energy",
+      "industry": "Oil & Gas Exploration & Production",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "FANG",
+      "name": "Diamondback Energy",
+      "sector": "Energy",
+      "industry": "Oil & Gas Exploration & Production",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "NEE",
+      "name": "NextEra Energy",
+      "sector": "Utilities",
+      "industry": "Electric Utilities",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "CEG",
+      "name": "Constellation Energy",
+      "sector": "Utilities",
+      "industry": "Electric Utilities",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "WMT",
+      "name": "Walmart",
+      "sector": "Consumer Staples",
+      "industry": "Consumer Staples Merchandise Retail",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "COST",
+      "name": "Costco Wholesale",
+      "sector": "Consumer Staples",
+      "industry": "Consumer Staples Merchandise Retail",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "PG",
+      "name": "Procter & Gamble",
+      "sector": "Consumer Staples",
+      "industry": "Household Products",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "KO",
+      "name": "Coca-Cola",
+      "sector": "Consumer Staples",
+      "industry": "Soft Drinks & Non-alcoholic Beverages",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "PEP",
+      "name": "PepsiCo",
+      "sector": "Consumer Staples",
+      "industry": "Soft Drinks & Non-alcoholic Beverages",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "MCD",
+      "name": "McDonald's",
+      "sector": "Consumer Discretionary",
+      "industry": "Restaurants",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "HD",
+      "name": "Home Depot",
+      "sector": "Consumer Discretionary",
+      "industry": "Home Improvement Retail",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "LOW",
+      "name": "Lowe's",
+      "sector": "Consumer Discretionary",
+      "industry": "Home Improvement Retail",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "NKE",
+      "name": "Nike",
+      "sector": "Consumer Discretionary",
+      "industry": "Apparel, Accessories & Luxury Goods",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "AMT",
+      "name": "American Tower",
+      "sector": "Real Estate",
+      "industry": "Telecom Tower REITs",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "PLD",
+      "name": "Prologis",
+      "sector": "Real Estate",
+      "industry": "Industrial REITs",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "EQIX",
+      "name": "Equinix",
+      "sector": "Real Estate",
+      "industry": "Data Center REITs",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "O",
+      "name": "Realty Income",
+      "sector": "Real Estate",
+      "industry": "Retail REITs",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "SPG",
+      "name": "Simon Property Group",
+      "sector": "Real Estate",
+      "industry": "Retail REITs",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "FCX",
+      "name": "Freeport-McMoRan",
+      "sector": "Materials",
+      "industry": "Copper",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "NUE",
+      "name": "Nucor",
+      "sector": "Materials",
+      "industry": "Steel",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "APD",
+      "name": "Air Products and Chemicals",
+      "sector": "Materials",
+      "industry": "Industrial Gases",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "LIN",
+      "name": "Linde",
+      "sector": "Materials",
+      "industry": "Industrial Gases",
+      "size_band": "Mega"
+    }
+  ],
+  "canada": [
+    {
+      "ticker": "SHOP",
+      "name": "Shopify",
+      "sector": "Information Technology",
+      "industry": "Application Software",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "RY",
+      "name": "Royal Bank of Canada",
+      "sector": "Financials",
+      "industry": "Diversified Banks",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "TD",
+      "name": "Toronto-Dominion Bank",
+      "sector": "Financials",
+      "industry": "Diversified Banks",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "BNS",
+      "name": "Bank of Nova Scotia",
+      "sector": "Financials",
+      "industry": "Diversified Banks",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "BMO",
+      "name": "Bank of Montreal",
+      "sector": "Financials",
+      "industry": "Diversified Banks",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "CM",
+      "name": "Canadian Imperial Bank of Commerce",
+      "sector": "Financials",
+      "industry": "Diversified Banks",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "ENB",
+      "name": "Enbridge",
+      "sector": "Energy",
+      "industry": "Oil & Gas Storage & Transportation",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "CNQ",
+      "name": "Canadian Natural Resources",
+      "sector": "Energy",
+      "industry": "Oil & Gas Exploration & Production",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "SU",
+      "name": "Suncor Energy",
+      "sector": "Energy",
+      "industry": "Integrated Oil & Gas",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "CVE",
+      "name": "Cenovus Energy",
+      "sector": "Energy",
+      "industry": "Integrated Oil & Gas",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "TRP",
+      "name": "TC Energy",
+      "sector": "Energy",
+      "industry": "Oil & Gas Storage & Transportation",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "CNR",
+      "name": "Canadian National Railway",
+      "sector": "Industrials",
+      "industry": "Rail Transportation",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "CP",
+      "name": "Canadian Pacific Kansas City",
+      "sector": "Industrials",
+      "industry": "Rail Transportation",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "CSU",
+      "name": "Constellation Software",
+      "sector": "Information Technology",
+      "industry": "Application Software",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "BN",
+      "name": "Brookfield Corporation",
+      "sector": "Financials",
+      "industry": "Multi-Sector Holdings",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "BAM",
+      "name": "Brookfield Asset Management",
+      "sector": "Financials",
+      "industry": "Asset Management & Custody Banks",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "ABX",
+      "name": "Barrick Gold",
+      "sector": "Materials",
+      "industry": "Gold",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "NTR",
+      "name": "Nutrien",
+      "sector": "Materials",
+      "industry": "Fertilizers & Agricultural Chemicals",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "WCN",
+      "name": "Waste Connections",
+      "sector": "Industrials",
+      "industry": "Environmental & Facilities Services",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "ATD",
+      "name": "Alimentation Couche-Tard",
+      "sector": "Consumer Staples",
+      "industry": "Consumer Staples Merchandise Retail",
+      "size_band": "Large"
+    }
+  ]
+}
