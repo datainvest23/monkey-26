@@ -22,7 +22,13 @@ if(consoleActionsCopy)consoleActionsCopy.textContent='Your filters already defin
 var apply=document.getElementById('apply-universe'),active=document.getElementById('active-count');
 function updateApply(){if(!apply)return;var count=parseInt((active&&active.textContent)||'0',10)||0;apply.disabled=count<1;apply.textContent=count?'Use '+count.toLocaleString('en-US')+' listings →':'At least one security required';}
 updateApply();if(active)new MutationObserver(updateApply).observe(active,{childList:true,characterData:true,subtree:true});
-var audit=document.getElementById('audit');if(audit&&audit.querySelector('.control-copy')){audit.querySelector('b').textContent='Audit edition';audit.querySelector('small').textContent='Show page and line data';}
+function setControl(id,label,copy){var button=document.getElementById(id);if(!button)return;var b=button.querySelector('.control-copy b'),small=button.querySelector('.control-copy small');if(b)b.textContent=label;if(small)small.textContent=copy;}
+setControl('throw','Draw + throw','Pick from the full edition');
+setControl('throw10','Run 10','10 direct market draws');
+setControl('throw100','Run 100','100 direct market draws');
+setControl('throw1000','Run 1,000','1,000 direct market draws');
+setControl('audit','Audit edition','Show page and line data');
+var command=document.querySelector('.command-note');if(command)command.innerHTML='Direct selection uses <code>crypto.getRandomValues</code> with rejection sampling · Newspaper pagination is visual only · Changing the active universe starts a fresh edition';
 var ledgerHead=document.querySelector('#ledger-title');if(ledgerHead)ledgerHead.textContent='Selection ledger';
 var headers=document.querySelectorAll('.ledger-panel thead th');if(headers[1])headers[1].textContent='Page / line';
 var method=document.querySelector('.methodology');
