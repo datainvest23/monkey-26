@@ -4,67 +4,15 @@ A cinematic, filterable implementation of Burton Malkiel's blindfolded-monkey th
 
 Version 3 expands the original 31-ticker prototype into a governed **Global 360** universe and lets the user define what the monkey is allowed to hit.
 
-## Version 3 capabilities
+## What actually ships
 
-- Governed 360-security source split across five reviewable regional files
-- Global, stocks-only, regional, ETF and innovation presets
-- Region, sector, size-band, instrument and text filters
-- Dynamic equal-probability proof for every valid active universe
-- Cryptographic Fisher–Yates shuffle before every throw
-- Rejection sampling to remove modulo bias
-- Single, 10, 100 and 1,000-throw simulation modes
-- Dynamic expected coverage, entropy, chi-square and p-value analysis
-- Observed-versus-universe region, sector, size and instrument diagnostics
-- Audit mode for the current 25-card deal
-- Exportable experiment ledger
-- Responsive, dependency-free browser interface
-
-## Probability model
-
-For an active universe containing `N` eligible securities:
-
-```text
-P(selection) = P(dealt) × P(hit | dealt)
-             = 25/N × 1/25
-             = 1/N
-```
-
-Changing a preset or filter creates a new active universe and resets the experiment. The simulator requires at least 25 eligible securities.
-
-## Governed data sources
-
-The source universe is split by region so additions and corrections remain easy to review:
-
-```text
-data/global360/source-north-america.json
-data/global360/source-europe.json
-data/global360/source-asia-pacific.json
-data/global360/source-emerging-markets.json
-data/global360/source-etfs.json
-```
-
-Each record currently contains:
-
-```text
-ticker | name | sector | industry | size band
-```
-
-The browser data loader adds market-group, country, region, exchange, currency and instrument classifications. The governed Excel security master remains the editorial source of truth for future enrichment.
-
-## Application structure
-
-```text
-index.html       redirects to the current V3 release
-v3.html          semantic interface
-styles.css       core cinematic design system
-v3.css           Global 360 controls and analytics
-v3-data.js       source loading, parsing and presets
-v3-engine.js     randomness, probability and statistics
-v3-ui.js         filters, interactions, charts and CSV export
-scripts/validate-universe.js
-```
-
-The original `app.js` and `tickers.js` files are retained as historical prototype code.
+The current codebase is a layered stack of patches applied on top of the original version:
+- `index.html` redirects to `v4.html`.
+- `v4.html` loads `v4-animation.js`, which dynamically injects `v5.css` and chain-loads `v6.js` -> `v7.js` -> `v8.js` -> `v9.js`.
+- Each JS layer injects its own stylesheet and rewrites the DOM produced by the previous layer.
+- Application state is read back out of the DOM via `parseInt(textContent)`.
+- The UI claims a cryptographic draw, but `v3-engine.js` silently falls back to `Math.random()` when crypto is unavailable.
+- `app.js`, `tickers.js`, and intro media files have been moved out of the served root.
 
 ## Run locally
 
@@ -83,10 +31,6 @@ node scripts/validate-universe.js
 ```
 
 The validator checks source-file availability, field structure, record count, mandatory values and group/ticker uniqueness.
-
-## Data maturity
-
-Global 360 is a curated beta research universe. Size bands are design classifications rather than live calculations. Stable identifiers, live market capitalisation, liquidity, corporate-action handling and return tracking remain planned enrichment layers.
 
 ## Disclaimer
 

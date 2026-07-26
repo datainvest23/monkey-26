@@ -1,1 +1,214 @@
-{"etfs":"SPY|SPDR S&P 500 ETF Trust|Broad Market|US Large-Cap Equity|Mega\nQQQ|Invesco QQQ Trust|Broad Market|US Nasdaq-100 Equity|Mega\nIWM|iShares Russell 2000 ETF|Broad Market|US Small-Cap Equity|Mega\nVTI|Vanguard Total Stock Market ETF|Broad Market|US Total Market Equity|Mega\nVXUS|Vanguard Total International Stock ETF|International Equity|Global ex-US Equity|Mega\nIEFA|iShares Core MSCI EAFE ETF|International Equity|Developed Markets ex-US & Canada|Mega\nIEMG|iShares Core MSCI Emerging Markets ETF|International Equity|Emerging Markets Equity|Mega\nEFA|iShares MSCI EAFE ETF|International Equity|Developed Markets ex-US & Canada|Mega\nEEM|iShares MSCI Emerging Markets ETF|International Equity|Emerging Markets Equity|Mega\nEWJ|iShares MSCI Japan ETF|Country Equity|Japan Equity|Large\nEWG|iShares MSCI Germany ETF|Country Equity|Germany Equity|Large\nEWU|iShares MSCI United Kingdom ETF|Country Equity|United Kingdom Equity|Large\nEWQ|iShares MSCI France ETF|Country Equity|France Equity|Large\nEWP|iShares MSCI Spain ETF|Country Equity|Spain Equity|Large\nEWC|iShares MSCI Canada ETF|Country Equity|Canada Equity|Large\nEWA|iShares MSCI Australia ETF|Country Equity|Australia Equity|Large\nINDA|iShares MSCI India ETF|Country Equity|India Equity|Large\nMCHI|iShares MSCI China ETF|Country Equity|China Equity|Large\nEWZ|iShares MSCI Brazil ETF|Country Equity|Brazil Equity|Large\nVGT|Vanguard Information Technology ETF|Sector Equity|Information Technology|Mega\nIXN|iShares Global Tech ETF|Sector Equity|Global Information Technology|Large\nARKQ|ARK Autonomous Technology & Robotics ETF|Thematic Equity|Autonomous Technology & Robotics|Mid\nLIT|Global X Lithium & Battery Tech ETF|Thematic Equity|Lithium & Battery Technology|Large\nCARZ|First Trust S-Network Future Vehicles & Technology ETF|Thematic Equity|Future Vehicles & Technology|Small\nFDN|First Trust Dow Jones Internet Index Fund|Thematic Equity|Internet & Digital Platforms|Large\nDRSK|Aptus Defined Risk ETF|Multi-Asset|Defined Risk Equity|Small\nSMH|VanEck Semiconductor ETF|Sector Equity|Semiconductors|Mega\nITA|iShares U.S. Aerospace & Defense ETF|Sector Equity|Aerospace & Defense|Large\nICLN|iShares Global Clean Energy ETF|Thematic Equity|Global Clean Energy|Large\nXLE|Energy Select Sector SPDR Fund|Sector Equity|US Energy|Mega"}
+{
+  "etfs": [
+    {
+      "ticker": "SPY",
+      "name": "SPDR S&P 500 ETF Trust",
+      "sector": "Broad Market",
+      "industry": "US Large-Cap Equity",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "QQQ",
+      "name": "Invesco QQQ Trust",
+      "sector": "Broad Market",
+      "industry": "US Nasdaq-100 Equity",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "IWM",
+      "name": "iShares Russell 2000 ETF",
+      "sector": "Broad Market",
+      "industry": "US Small-Cap Equity",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "VTI",
+      "name": "Vanguard Total Stock Market ETF",
+      "sector": "Broad Market",
+      "industry": "US Total Market Equity",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "VXUS",
+      "name": "Vanguard Total International Stock ETF",
+      "sector": "International Equity",
+      "industry": "Global ex-US Equity",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "IEFA",
+      "name": "iShares Core MSCI EAFE ETF",
+      "sector": "International Equity",
+      "industry": "Developed Markets ex-US & Canada",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "IEMG",
+      "name": "iShares Core MSCI Emerging Markets ETF",
+      "sector": "International Equity",
+      "industry": "Emerging Markets Equity",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "EFA",
+      "name": "iShares MSCI EAFE ETF",
+      "sector": "International Equity",
+      "industry": "Developed Markets ex-US & Canada",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "EEM",
+      "name": "iShares MSCI Emerging Markets ETF",
+      "sector": "International Equity",
+      "industry": "Emerging Markets Equity",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "EWJ",
+      "name": "iShares MSCI Japan ETF",
+      "sector": "Country Equity",
+      "industry": "Japan Equity",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "EWG",
+      "name": "iShares MSCI Germany ETF",
+      "sector": "Country Equity",
+      "industry": "Germany Equity",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "EWU",
+      "name": "iShares MSCI United Kingdom ETF",
+      "sector": "Country Equity",
+      "industry": "United Kingdom Equity",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "EWQ",
+      "name": "iShares MSCI France ETF",
+      "sector": "Country Equity",
+      "industry": "France Equity",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "EWP",
+      "name": "iShares MSCI Spain ETF",
+      "sector": "Country Equity",
+      "industry": "Spain Equity",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "EWC",
+      "name": "iShares MSCI Canada ETF",
+      "sector": "Country Equity",
+      "industry": "Canada Equity",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "EWA",
+      "name": "iShares MSCI Australia ETF",
+      "sector": "Country Equity",
+      "industry": "Australia Equity",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "INDA",
+      "name": "iShares MSCI India ETF",
+      "sector": "Country Equity",
+      "industry": "India Equity",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "MCHI",
+      "name": "iShares MSCI China ETF",
+      "sector": "Country Equity",
+      "industry": "China Equity",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "EWZ",
+      "name": "iShares MSCI Brazil ETF",
+      "sector": "Country Equity",
+      "industry": "Brazil Equity",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "VGT",
+      "name": "Vanguard Information Technology ETF",
+      "sector": "Sector Equity",
+      "industry": "Information Technology",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "IXN",
+      "name": "iShares Global Tech ETF",
+      "sector": "Sector Equity",
+      "industry": "Global Information Technology",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "ARKQ",
+      "name": "ARK Autonomous Technology & Robotics ETF",
+      "sector": "Thematic Equity",
+      "industry": "Autonomous Technology & Robotics",
+      "size_band": "Mid"
+    },
+    {
+      "ticker": "LIT",
+      "name": "Global X Lithium & Battery Tech ETF",
+      "sector": "Thematic Equity",
+      "industry": "Lithium & Battery Technology",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "CARZ",
+      "name": "First Trust S-Network Future Vehicles & Technology ETF",
+      "sector": "Thematic Equity",
+      "industry": "Future Vehicles & Technology",
+      "size_band": "Small"
+    },
+    {
+      "ticker": "FDN",
+      "name": "First Trust Dow Jones Internet Index Fund",
+      "sector": "Thematic Equity",
+      "industry": "Internet & Digital Platforms",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "DRSK",
+      "name": "Aptus Defined Risk ETF",
+      "sector": "Multi-Asset",
+      "industry": "Defined Risk Equity",
+      "size_band": "Small"
+    },
+    {
+      "ticker": "SMH",
+      "name": "VanEck Semiconductor ETF",
+      "sector": "Sector Equity",
+      "industry": "Semiconductors",
+      "size_band": "Mega"
+    },
+    {
+      "ticker": "ITA",
+      "name": "iShares U.S. Aerospace & Defense ETF",
+      "sector": "Sector Equity",
+      "industry": "Aerospace & Defense",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "ICLN",
+      "name": "iShares Global Clean Energy ETF",
+      "sector": "Thematic Equity",
+      "industry": "Global Clean Energy",
+      "size_band": "Large"
+    },
+    {
+      "ticker": "XLE",
+      "name": "Energy Select Sector SPDR Fund",
+      "sector": "Sector Equity",
+      "industry": "US Energy",
+      "size_band": "Mega"
+    }
+  ]
+}

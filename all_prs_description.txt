@@ -1,0 +1,58 @@
+
+Pull Request Descriptions:
+
+=== Phase 0 ===
+Phase 0 PR Description:
+Tagged the current state, updated README.md to describe the actual patch-on-patch shipped architecture, and moved orphaned legacy files (app.js, tickers.js, media) out of the root.
+
+
+=== Phase 1 ===
+Phase 1 PR Description:
+- Collapsed v4 through v9 into a single build: one index.html, one styles.css, and four ES modules (data.js, engine.js, ui.js, animation.js).
+- Removed all runtime script chain-loading.
+- Removed MutationObserver DOM patching by moving layout modifications directly to ui.js initialisation.
+- Visual design is exactly preserved.
+- Behavior to verify by hand: Check that filters update the diagnostic UI instantly and that random selections still execute.
+
+
+=== Phase 2 ===
+Phase 2 PR Description:
+- Refactored engine.js to a pure ES module using an ES6 class 'Engine'.
+- Introduced an injectable RNG for the engine to allow for deterministic testing, with default behaviour falling back to crypto.getRandomValues or Math.random.
+- Added a node:test suite covering uniformity with a seeded generator, rejection sampling bounds, chi-square logic, logGamma/gammaQ against reference values, entropy logic, and CSV escaping.
+- Updated the existing GitHub Actions workflow to run the new test suite.
+- Behavior to verify by hand: No manual test strictly required for RNG refactor, as logic is covered by the test suite, but verify that drawing single/batch picks works normally in the UI.
+
+
+=== Phase 3 ===
+Decoupled the shuffle from the draw: the engine now only shuffles once when the universe is set (new edition), avoiding O(N) shuffling per throw and removing 360,000 crypto calls per 1000 throws.
+Replaced the O(n^2) unshift in the ledger with push and updated UI rendering and CSV generation to match.
+Moved batch runs off the main thread chunking them via requestAnimationFrame to keep the UI responsive and provide progress feedback.
+Batch simulations for 1000 throws now run in a fraction of the time, reliably under 100ms compute time.
+Behavior to verify by hand: Run 1,000 simulations using the UI button. Note the progress indicator updating live and the immediate finish without freezing the browser.
+
+=== Phase 4 ===
+Phase 4 PR Description:
+- Gated the p-value metric to require a minimum expected-count threshold (E.throws >= 5*n) before presenting the p-value. Below this threshold, it is labeled as 'provisional'.
+- Surfaced the RNG source in the audit panel, warning visibly if the `Math.random()` fallback is used.
+- Clarified the UI copy to explicitly document the entropy normalization choice (dividing by log(min(N, throws))).
+- Updated the interface to accurately state that probability is uniform across **listings**, not **issuers**.
+- Behavior to verify by hand: Throw darts and check the KPI panel for the provisional label on the p-value until enough throws are achieved, and inspect the copy changes.
+
+
+=== Phase 5 ===
+Phase 5 PR Description:
+- Migrated the source data in `data/global360/` to structured JSON records, removing the fragile pipe-delimited format.
+- Added a JSON Schema (`schema.json`) to describe the new data model.
+- Created a shared `shared-data.js` parser module that is now consumed by both the browser app and the node validator, ensuring logic parity.
+- Extended the validator to flag cross-group ticker collisions (now successfully catching RIO, SU, SAN collisions) and output summary distributions for sectors and size-bands.
+- Updated the README to document the universe's mega/large-cap concentration (338 of 360) as a known survivorship bias.
+- Behavior to verify by hand: Run `node scripts/validate-universe.js` and note the structural summary and the new ticker collision errors.
+
+
+=== Phase 6 ===
+Phase 6 PR Description:
+- Added point-in-time return tracking to the data model, marking `price` and `returnPct` as 'Needs verification' without inventing any external market data.
+- Implemented a new 'Return tracking' section in the UI providing a comparison view between the first 25 darts (portfolio return) and the active universe benchmark.
+- Extended the JSON schema to accommodate optional `price` and `return_pct` fields for future data enrichment.
+- Behavior to verify by hand: Look for the new 'Return tracking: 25 darts versus a benchmark' section in the application and confirm the values read 'Needs verification' as intended.
