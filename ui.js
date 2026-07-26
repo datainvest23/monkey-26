@@ -1,5 +1,6 @@
 import { data as M } from "./data.js";
 import { engine as E } from "./engine.js";
+const $ = id => document.getElementById(id);
 
 'use strict';
 
@@ -15,7 +16,7 @@ function paintEdition(result){if(!E.edition.length)return;var page=result?result
 function filters(){var base=M.presets[preset][1],r=$('filter-region').value,s=$('filter-sector').value,c=$('filter-cap').value,a=$('filter-asset').value,q=$('filter-search').value.trim().toLowerCase();return all.filter(function(d){if(!base(d)||r&&d.region!==r||s&&d.sector!==s||c&&d.size!==c||a&&d.assetType!==a)return false;if(q&&[d.id,d.ticker,d.name,d.country,d.region,d.sector,d.industry,d.group].join(' ').toLowerCase().indexOf(q)<0)return false;return true;});}
 function apply(announce){var rows=filters(),label=M.presets[preset][0];E.setUniverse(rows,label);clearVisual();if(rows.length)paintEdition();renderUniverse();render();if(announce)notify(rows.length+' securities eligible');}
 function clearVisual(){grid.classList.remove('audit','turning');var current=grid.querySelectorAll('.current-pick,.has-pin');current.forEach(function(el){el.classList.remove('current-pick','has-pin');});grid.querySelectorAll('.news-pins').forEach(function(el){el.innerHTML='';});}
-function renderUniverse(){var n=E.active.length,markets=M.unique(E.active.map(function(d){return d.country;})),sectors=M.unique(E.active.map(function(d){return d.sector;})),assets=M.countBy(E.active,'assetType'),regions=M.countBy(E.active,'region'),largest=Object.keys(regions).sort(function(a,b){return regions[b]-regions[a];})[0]||'—';$('active-count').textContent=n;$('diag-countries').textContent=markets.length;$('diag-sectors').textContent=sectors.length;$('diag-assets').textContent=(assets.Stock||0)+' / '+(assets.ETF||0);$('diag-region').textContent=largest==='—'?'—':largest+' ('+regions[largest]+')';$('diag-odds').textContent=n?'1 in '+n:'—';$('diag-status').textContent=n?'Validated beta':'Insufficient';$('hero-kicker').textContent=n+' securities · full-market newspaper · zero conviction';$('meta-count').textContent=n+' active / '+all.length+' total';$('k-universe').textContent=n||'—';$('k-probability').textContent=n?'1 / '+n+' per security':'probability pending';if(n){$('probability-equation').innerHTML='P(pick) = <strong>1/'+n+'</strong>';$('probability-copy').textContent='One unbiased cryptographic draw gives every eligible security exactly '+(100/n).toFixed(n>200?3:2)+'% per throw.';$('eligibility-warning').hidden=true;$('stage-verdict').textContent='—';$('stage-sub').textContent=M.presets[preset][0]+' · full edition ready.';plaque.innerHTML='<span class="plaque-label">Edition ready</span><span class="plaque-name">'+n+' eligible securities · '+Math.ceil(n/E.pageSize)+' newspaper spreads</span>';}else{$('probability-equation').textContent='P(pick) = unavailable';$('probability-copy').textContent='At least one eligible security is required.';$('eligibility-warning').hidden=false;$('eligibility-warning').textContent='No securities match. Broaden the filters to continue.';$('stage-verdict').textContent='Universe empty.';}global.dispatchEvent(new CustomEvent('m26:universe',{detail:{count:n,label:M.presets[preset][0]}}));sync();}
+function renderUniverse(){var n=E.active.length,markets=M.unique(E.active.map(function(d){return d.country;})),sectors=M.unique(E.active.map(function(d){return d.sector;})),assets=M.countBy(E.active,'assetType'),regions=M.countBy(E.active,'region'),largest=Object.keys(regions).sort(function(a,b){return regions[b]-regions[a];})[0]||'—';$('active-count').textContent=n;$('diag-countries').textContent=markets.length;$('diag-sectors').textContent=sectors.length;$('diag-assets').textContent=(assets.Stock||0)+' / '+(assets.ETF||0);$('diag-region').textContent=largest==='—'?'—':largest+' ('+regions[largest]+')';$('diag-odds').textContent=n?'1 in '+n:'—';$('diag-status').textContent=n?'Validated beta':'Insufficient';$('hero-kicker').textContent=n+' securities · full-market newspaper · zero conviction';$('meta-count').textContent=n+' active / '+all.length+' total';$('k-universe').textContent=n||'—';$('k-probability').textContent=n?'1 / '+n+' per security':'probability pending';if(n){$('probability-equation').innerHTML='P(pick) = <strong>1/'+n+'</strong>';$('probability-copy').textContent='One unbiased cryptographic draw gives every eligible security exactly '+(100/n).toFixed(n>200?3:2)+'% per throw.';$('eligibility-warning').hidden=true;$('stage-verdict').textContent='—';$('stage-sub').textContent=M.presets[preset][0]+' · full edition ready.';plaque.innerHTML='<span class="plaque-label">Edition ready</span><span class="plaque-name">'+n+' eligible securities · '+Math.ceil(n/E.pageSize)+' newspaper spreads</span>';}else{$('probability-equation').textContent='P(pick) = unavailable';$('probability-copy').textContent='At least one eligible security is required.';$('eligibility-warning').hidden=false;$('eligibility-warning').textContent='No securities match. Broaden the filters to continue.';$('stage-verdict').textContent='Universe empty.';}window.dispatchEvent(new CustomEvent('m26:universe',{detail:{count:n,label:M.presets[preset][0]}}));sync();}
 function sync(){var ok=E.active.length>0;['throw','throw10','throw100','throw1000','audit'].forEach(function(id){$(id).disabled=busy||!ok;});$('copy').disabled=busy||!E.ledger.length;$('download').disabled=busy||!E.ledger.length;$('reset').disabled=busy||!all.length;}
 function comparison(el,field,order,limit){var base=M.countBy(E.active,field),obs={};E.ledger.forEach(function(r){var v=r.security[field];obs[v]=(obs[v]||0)+1;});var names=order||M.unique(Object.keys(base).concat(Object.keys(obs)));names=names.filter(function(n){return base[n]||obs[n];}).sort(function(a,b){return (obs[b]||0)-(obs[a]||0)||(base[b]||0)-(base[a]||0);});if(limit)names=names.slice(0,limit);el.innerHTML=names.map(function(n){var bp=E.active.length?(base[n]||0)/E.active.length*100:0,op=E.throws?(obs[n]||0)/E.throws*100:0;return '<div class="compare-row"><div class="compare-head"><span>'+esc(n)+'</span><span>'+(E.throws?op.toFixed(1)+'%':'—')+' / '+bp.toFixed(1)+'%</span></div><div class="compare-track"><div class="compare-base" style="width:'+bp+'%"></div><div class="compare-observed" style="width:'+op+'%"></div></div></div>';}).join('');}
 function render(){var n=E.active.length,distinct=Object.keys(E.counts).length,ent=E.entropy(),p=E.pValue();$('k-throws').textContent=E.throws.toLocaleString('en-US');$('k-distinct').innerHTML=distinct+' <small>/ '+n+'</small>';$('k-distinct-note').textContent='expected '+E.expectedDistinct().toFixed(1);$('k-repeat').textContent=(E.throws?(E.throws-distinct)/E.throws*100:0).toFixed(1)+'%';$('k-entropy').textContent=ent==null?'—':ent.toFixed(3);var fair=$('k-fair'),note=$('k-fair-note');fair.className='kpi-value';if(p==null){fair.textContent='—';note.textContent=n?'exploratory after '+n+' throws':'awaiting universe';}else{if(E.throws<5*n){fair.textContent='provisional';fair.classList.add('warn');note.textContent='needs '+(5*n).toLocaleString('en-US')+' throws';}else{fair.textContent='p '+p.toFixed(3);if(p>=.05){fair.classList.add('ok');note.textContent='consistent with equal 1/'+n;}else{fair.classList.add('bad');note.textContent='unusually uneven sample';}}}
@@ -32,7 +33,7 @@ var ranked=Object.keys(E.counts).map(function(id){return {d:E.active.find(functi
 
 renderLedger();sync();}
 function renderLedger(){var b=$('ledger');if(!E.ledger.length){b.innerHTML='<tr><td class="empty" colspan="12">Throw a dart to mark the first newspaper listing.</td></tr>';return;}b.innerHTML=E.ledger.slice(-500).reverse().map(function(r){var d=r.security,cl=M.capClass[d.size]||'large';return '<tr><td>'+r.no+'</td><td>'+r.page+' / '+r.line+'</td><td class="ticker-cell">'+esc(d.ticker)+'</td><td class="company-cell">'+esc(d.name)+'</td><td>'+esc(d.country)+'</td><td>'+esc(d.region)+'</td><td>'+esc(d.sector)+'</td><td>'+esc(d.industry)+'</td><td><span class="chip '+cl+'">'+esc(d.size)+'</span></td><td>'+esc(d.assetType)+'</td><td>'+esc(d.exchange)+'</td><td>'+esc(d.group)+'</td></tr>';}).join('');}
-function showResult(r){paintEdition(r);var p=M.capClass[r.security.size]||'large';plaque.innerHTML='<span class="plaque-label">Page '+r.page+' · line '+r.line+'</span><span class="plaque-ticker">'+esc(r.security.ticker)+'</span><span class="plaque-name">'+esc(r.security.name+' · '+r.security.country+' · '+r.security.sector)+'</span><span class="chip '+p+'">'+r.security.size+'</span>';$('stage-verdict').textContent=r.security.ticker;$('stage-sub').textContent=r.security.name+' · '+r.security.country+' · '+r.security.size;var cryptoWarn = r.rng.crypto ? '' : ' <strong style="color:#e15242;">WARNING: Math.random() Fallback</strong>';$('entropy').innerHTML='<b>DIRECT DRAW</b> '+E.active.length+' eligible securities · raw <span class="v">'+(r.rng.raw<0?'n/a':'0x'+r.rng.raw.toString(16).toUpperCase().padStart(8,'0'))+'</span> → index <span class="v">'+r.selectionIndex+'</span> · <b>EDITION</b> page <span class="v">'+r.page+'</span>, line <span class="v">'+r.line+'</span> · cumulative RNG calls <span class="v">'+E.rng.calls.toLocaleString('en-US')+'</span>' + cryptoWarn;render();live.textContent='Picked '+r.security.ticker+', '+r.security.name+', page '+r.page+', line '+r.line;global.dispatchEvent(new CustomEvent('m26:result',{detail:r}));}
+function showResult(r){paintEdition(r);var p=M.capClass[r.security.size]||'large';plaque.innerHTML='<span class="plaque-label">Page '+r.page+' · line '+r.line+'</span><span class="plaque-ticker">'+esc(r.security.ticker)+'</span><span class="plaque-name">'+esc(r.security.name+' · '+r.security.country+' · '+r.security.sector)+'</span><span class="chip '+p+'">'+r.security.size+'</span>';$('stage-verdict').textContent=r.security.ticker;$('stage-sub').textContent=r.security.name+' · '+r.security.country+' · '+r.security.size;var cryptoWarn = r.rng.crypto ? '' : ' <strong style="color:#e15242;">WARNING: Math.random() Fallback</strong>';$('entropy').innerHTML='<b>DIRECT DRAW</b> '+E.active.length+' eligible securities · raw <span class="v">'+(r.rng.raw<0?'n/a':'0x'+r.rng.raw.toString(16).toUpperCase().padStart(8,'0'))+'</span> → index <span class="v">'+r.selectionIndex+'</span> · <b>EDITION</b> page <span class="v">'+r.page+'</span>, line <span class="v">'+r.line+'</span> · cumulative RNG calls <span class="v">'+E.rng.calls.toLocaleString('en-US')+'</span>' + cryptoWarn;render();live.textContent='Picked '+r.security.ticker+', '+r.security.name+', page '+r.page+', line '+r.line;window.dispatchEvent(new CustomEvent('m26:result',{detail:r}));}
 async function run(n) {
   if(busy)return;
   busy=true;
@@ -82,7 +83,7 @@ async function run(n) {
   }
 }
 function download(){var blob=new Blob([E.csv()],{type:'text/csv;charset=utf-8'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='monkey26-ledger-'+new Date().toISOString().slice(0,10)+'.csv';a.click();URL.revokeObjectURL(u);}
-function bind(){document.querySelectorAll('.preset').forEach(function(b){b.onclick=function(){preset=b.dataset.preset;document.querySelectorAll('.preset').forEach(function(x){x.classList.toggle('active',x===b);});['filter-region','filter-sector','filter-cap','filter-asset','filter-search'].forEach(function(id){$(id).value='';});apply(true);};});['filter-region','filter-sector','filter-cap','filter-asset'].forEach(function(id){$(id).onchange=function(){apply(true);};});var t;$('filter-search').oninput=function(){clearTimeout(t);t=setTimeout(function(){apply(false);},180);};$('clear-filters').onclick=function(){['filter-region','filter-sector','filter-cap','filter-asset','filter-search'].forEach(function(id){$(id).value='';});apply(true);};$('throw').onclick=function(){run(1);};$('throw10').onclick=function(){run(10);};$('throw100').onclick=function(){run(100);};$('throw1000').onclick=function(){run(1000);};$('audit').onclick=function(){audit=!audit;grid.classList.toggle('audit',audit);$('audit').textContent=audit?'Close audit':'Audit edition';};$('reset').onclick=function(){E.reset();clearVisual();if(E.active.length){E.newEdition();paintEdition();}render();global.dispatchEvent(new CustomEvent('m26:universe',{detail:{count:E.active.length,label:E.label}}));notify('Experiment reset');};$('copy').onclick=function(){navigator.clipboard?navigator.clipboard.writeText(E.csv()).then(function(){notify('Ledger copied');}):notify('Clipboard unavailable');};$('download').onclick=download;document.addEventListener('keydown',function(e){if(e.code==='Space'&&!e.repeat&&!/INPUT|SELECT|BUTTON/.test(document.activeElement.tagName)){e.preventDefault();run(1);}});}
+function bind(){document.querySelectorAll('.preset').forEach(function(b){b.onclick=function(){preset=b.dataset.preset;document.querySelectorAll('.preset').forEach(function(x){x.classList.toggle('active',x===b);});['filter-region','filter-sector','filter-cap','filter-asset','filter-search'].forEach(function(id){$(id).value='';});apply(true);};});['filter-region','filter-sector','filter-cap','filter-asset'].forEach(function(id){$(id).onchange=function(){apply(true);};});var t;$('filter-search').oninput=function(){clearTimeout(t);t=setTimeout(function(){apply(false);},180);};$('clear-filters').onclick=function(){['filter-region','filter-sector','filter-cap','filter-asset','filter-search'].forEach(function(id){$(id).value='';});apply(true);};$('throw').onclick=function(){run(1);};$('throw10').onclick=function(){run(10);};$('throw100').onclick=function(){run(100);};$('throw1000').onclick=function(){run(1000);};$('audit').onclick=function(){audit=!audit;grid.classList.toggle('audit',audit);$('audit').textContent=audit?'Close audit':'Audit edition';};$('reset').onclick=function(){E.reset();clearVisual();if(E.active.length){E.newEdition();paintEdition();}render();window.dispatchEvent(new CustomEvent('m26:universe',{detail:{count:E.active.length,label:E.label}}));notify('Experiment reset');};$('copy').onclick=function(){navigator.clipboard?navigator.clipboard.writeText(E.csv()).then(function(){notify('Ledger copied');}):notify('Clipboard unavailable');};$('download').onclick=download;document.addEventListener('keydown',function(e){if(e.code==='Space'&&!e.repeat&&!/INPUT|SELECT|BUTTON/.test(document.activeElement.tagName)){e.preventDefault();run(1);}});}
 async function init(){buildNewspaper();bind();status('Loading Global 360');try{all=await M.load();option($('filter-region'),M.unique(all.map(function(d){return d.region;})),'All regions');option($('filter-sector'),M.unique(all.map(function(d){return d.sector;})),'All sectors');option($('filter-cap'),M.capOrder,'All size bands');option($('filter-asset'),M.unique(all.map(function(d){return d.assetType;})),'All instruments');$('meta-version').textContent=M.meta.version;$('meta-date').textContent='Snapshot 25 Jul 2026';$('footer-data').textContent=M.meta.name+' · '+M.meta.version;apply(false);status('Global 360 validated','ready');notify('Global 360 universe loaded');}catch(e){status('Universe load failed','error');$('eligibility-warning').hidden=false;$('eligibility-warning').textContent=e.message;console.error(e);}}
 init();
 
@@ -172,14 +173,15 @@ init();
   }
 
   var applyButton=document.getElementById('apply-universe');
-  var activeCount=document.getElementById('active-count');
-  function updateApply(){
-    var count=parseInt((activeCount&&activeCount.textContent)||'0',10)||0;
-    applyButton.disabled=count<25;
-    applyButton.textContent=count>=25?'Use '+count.toLocaleString('en-US')+' securities →':'At least 25 securities required';
+  function updateApplyMain(){
+    var count = E.active ? E.active.length : 0;
+    if(applyButton) {
+      applyButton.disabled=count<25;
+      applyButton.textContent=count>=25?'Use '+count.toLocaleString('en-US')+' securities →':'At least 25 securities required';
+    }
   }
-  updateApply();
-  if(activeCount)new MutationObserver(updateApply).observe(activeCount,{childList:true,characterData:true,subtree:true});
+  updateApplyMain();
+  window.addEventListener('m26:universe', updateApplyMain);
   applyButton.addEventListener('click',function(){
     if(applyButton.disabled)return;
     stage.scrollIntoView({behavior:'smooth',block:'start'});
@@ -209,7 +211,7 @@ init();
     var hero=document.querySelector('.hero');
     if(!hero)return;
     var copy=hero.querySelector('.hero-copy');
-    if(copy)copy.innerHTML='A global random-pick <a class="malkiel-link" href="https://www.forbes.com/sites/rickferri/2012/12/20/any-monkey-can-beat-the-market/" target="_blank" rel="noopener noreferrer">experiment inspired by Burton Malkiel</a>. Choose the investable universe, reshuffle the financial newspaper before every throw, and test what unbiased selection actually looks like across markets, sectors and company sizes.';
+    if(copy)copy.innerHTML='A global random-pick <a class="malkiel-link" href="https://www.forbes.com/sites/rickferri/2012/12/20/any-monkey-can-beat-the-market/" target="_blank" rel="noopener noreferrer">experiment inspired by Burton Malkiel</a>. Choose the investable universe, reshuffle the financial newspaper for every universe, and test what unbiased selection actually looks like across markets, sectors and company sizes.';
     ['.kicker','.hero-copy','.hero-meta','.hero-actions','.fairness-card'].forEach(function(selector){
       var element=hero.querySelector(selector);
       if(element)element.classList.add('hero-intro-item');
@@ -320,7 +322,7 @@ init();
   var heroActions=document.querySelectorAll('.hero-action');
   heroActions.forEach(function(action){if(action.getAttribute('href')==='#live-range')action.innerHTML='Open the market pages <span class="arrow">→</span>';});
   var auditList=document.querySelector('.audit-list');
-  if(auditList)auditList.innerHTML='<li>Direct unbiased draw from the full active universe</li><li>Freshly shuffled newspaper edition for every throw</li><li>Every outcome retained in an exportable ledger</li>';
+  if(auditList)auditList.innerHTML='<li>Direct unbiased draw from the full active universe</li><li>Freshly shuffled newspaper edition per universe</li><li>Every outcome retained in an exportable ledger</li>';
   var fairnessLabel=document.querySelector('.fairness-label');if(fairnessLabel)fairnessLabel.textContent='Direct selection proof';
   var consoleCopy=document.querySelector('.console-copy');
   if(consoleCopy)consoleCopy.textContent='Start with a curated preset, then refine the eligible listings by geography, sector, size, instrument type or company. Every change recalculates the full newspaper edition and exact single-pick odds instantly.';
@@ -328,9 +330,15 @@ init();
   if(zoneCopy)zoneCopy.textContent='Combine filters freely. Results update live, and every remaining security is eligible for the next direct cryptographic draw.';
   var consoleActionsCopy=document.querySelector('.console-actions-copy');
   if(consoleActionsCopy)consoleActionsCopy.textContent='Your filters already define the full Stocks & Markets edition. Confirm the active universe to continue to the pressroom.';
-  var apply=document.getElementById('apply-universe'),active=document.getElementById('active-count');
-  function updateApply(){if(!apply)return;var count=parseInt((active&&active.textContent)||'0',10)||0;apply.disabled=count<1;apply.textContent=count?'Use '+count.toLocaleString('en-US')+' listings →':'At least one security required';}
-  updateApply();if(active)new MutationObserver(updateApply).observe(active,{childList:true,characterData:true,subtree:true});
+  var apply=document.getElementById('apply-universe');
+  function updateApplyV8(){
+    var count = E.active ? E.active.length : 0;
+    if(!apply)return;
+    apply.disabled=count<25; // 25 is the actual minimum required
+    apply.textContent=count>=25?'Use '+count.toLocaleString('en-US')+' listings →':'At least 25 securities required';
+  }
+  updateApplyV8();
+  window.addEventListener('m26:universe', updateApplyV8);
   function setControl(id,label,copy){var button=document.getElementById(id);if(!button)return;var b=button.querySelector('.control-copy b'),small=button.querySelector('.control-copy small');if(b)b.textContent=label;if(small)small.textContent=copy;}
   setControl('throw','Draw + throw','Pick from the full edition');
   setControl('throw10','Run 10','10 direct market draws');
@@ -368,17 +376,16 @@ init();
     var strip=document.createElement('div');
     strip.className='hero-proof-strip';
     strip.setAttribute('aria-label','Fairness and audit summary');
-    strip.innerHTML='<div class="hero-proof-item primary"><span>Equal single-pick odds</span><strong id="hero-inline-odds">1 in —</strong><small id="hero-inline-percent">Waiting for the active universe</small></div><div class="hero-proof-item"><span>Selection</span><strong>Direct cryptographic draw</strong></div><div class="hero-proof-item"><span>Publication</span><strong>Freshly shuffled market edition</strong></div><div class="hero-proof-item"><span>Audit trail</span><strong>Every outcome exportable</strong></div>';
+    strip.innerHTML='<div class="hero-proof-item primary"><span>Equal single-pick odds</span><strong id="hero-inline-odds">1 in —</strong><small id="hero-inline-percent">Waiting for the active universe</small></div><div class="hero-proof-item"><span>Selection</span><strong>Direct cryptographic draw</strong></div><div class="hero-proof-item"><span>Publication</span><strong>Shuffled market edition</strong></div><div class="hero-proof-item"><span>Audit trail</span><strong>Every outcome exportable</strong></div>';
     (actions||meta||hero.querySelector('.hero-main')).insertAdjacentElement('afterend',strip);
   }
-  var count=document.getElementById('active-count');
   var odds=document.getElementById('hero-inline-odds');
   var percent=document.getElementById('hero-inline-percent');
   function updateProof(){
-    var n=parseInt((count&&count.textContent)||'0',10)||0;
-    odds.textContent=n?'1 in '+n:'Unavailable';
-    percent.textContent=n?'Each eligible security receives '+(100/n).toFixed(n>200?3:2)+'% per throw':'Choose at least one eligible security';
+    var n = E.active ? E.active.length : 0;
+    if(odds) odds.textContent=n?'1 in '+n:'Unavailable';
+    if(percent) percent.textContent=n?'Each eligible listing receives '+(100/n).toFixed(n>200?3:2)+'% per throw':'Choose at least one eligible security';
   }
   updateProof();
-  if(count)new MutationObserver(updateProof).observe(count,{childList:true,characterData:true,subtree:true});
+  window.addEventListener('m26:universe', updateProof);
 })();

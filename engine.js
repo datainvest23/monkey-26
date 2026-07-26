@@ -106,6 +106,7 @@ export class Engine {
     this.throws = 0;
     this.counts = {};
     this.rng = { calls: 0, rejections: 0, last: null };
+    if (this.active && this.active.length) this.newEdition();
   }
 
   setUniverse(rows, label) {

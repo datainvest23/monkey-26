@@ -37,7 +37,10 @@ export const data = {
         }
 
         out.push({
-          id: group.toUpperCase() + ':' + record.ticker,
+          id: (function(exchange) {
+            const micMap = {"US Exchanges":"US","Toronto Stock Exchange":"XTSE","London Stock Exchange":"XLON","Xetra":"XETR","Euronext Paris":"XPAR","SIX Swiss Exchange":"XSWX","Euronext Amsterdam":"XAMS","BME Spanish Exchanges":"BMEX","Borsa Italiana":"MTAA","Nordic Exchanges":"NORD","European Exchanges":"EURX","Tokyo Stock Exchange":"XTKS","Australian Securities Exchange":"XASX","Korea Exchange":"XKRX","Hong Kong Stock Exchange":"XHKG","Singapore Exchange":"XSES","New Zealand Exchange":"XNZE","Israel / US Listings":"ILUS","National Stock Exchange of India":"XNSE","Taiwan Stock Exchange":"XTAI","B3":"BVMF","Bolsa Mexicana de Valores":"XMEX","Johannesburg Stock Exchange":"XJSE","Regional Exchanges":"REGX"};
+            return (micMap[exchange] || exchange.toUpperCase().replace(/\s+/g, '')) + ':' + record.ticker;
+          })(meta[2]),
           ticker: record.ticker,
           name: record.name,
           sector: record.sector,

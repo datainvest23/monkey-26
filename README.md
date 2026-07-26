@@ -6,13 +6,18 @@ Version 3 expands the original 31-ticker prototype into a governed **Global 360*
 
 ## What actually ships
 
-The current codebase is a layered stack of patches applied on top of the original version:
-- `index.html` redirects to `v4.html`.
-- `v4.html` loads `v4-animation.js`, which dynamically injects `v5.css` and chain-loads `v6.js` -> `v7.js` -> `v8.js` -> `v9.js`.
-- Each JS layer injects its own stylesheet and rewrites the DOM produced by the previous layer.
-- Application state is read back out of the DOM via `parseInt(textContent)`.
-- The UI claims a cryptographic draw, but `v3-engine.js` silently falls back to `Math.random()` when crypto is unavailable.
-- `app.js`, `tickers.js`, and intro media files have been moved out of the served root.
+The codebase uses a clean ES Module architecture:
+- `index.html` serves as the unified entry point.
+- Four main ES Modules drive the application: `data.js`, `engine.js`, `ui.js`, and `animation.js`.
+- Data is fully governed and statically validated, managed as JSON records rather than fragile delimited strings.
+- Statistical tracking calculates live expected coverage, p-values, and entropy based directly on internal state, not DOM reading.
+- The UI transparently notes when crypto randomness is unavailable, falling back securely while alerting the user.
+
+## Data maturity
+
+Global 360 is a curated beta research universe. Size bands are design classifications rather than live calculations. Stable identifiers, live market capitalisation, liquidity, corporate-action handling and return tracking remain planned enrichment layers.
+
+**Note on survivorship bias:** The current curated universe has a heavy concentration of mega-cap and large-cap securities (338 out of 360). This is a known survivorship and selection bias that should be accounted for when interpreting aggregate performance simulations.
 
 ## Run locally
 

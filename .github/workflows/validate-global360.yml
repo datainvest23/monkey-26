@@ -7,12 +7,22 @@ on:
       - "data/global360/**"
       - "scripts/validate-universe.js"
       - "data.js"
+      - "engine.js"
+      - "ui.js"
+      - "animation.js"
+      - "shared-data.js"
+      - "engine.test.js"
       - ".github/workflows/validate-global360.yml"
   pull_request:
     paths:
       - "data/global360/**"
       - "scripts/validate-universe.js"
       - "data.js"
+      - "engine.js"
+      - "ui.js"
+      - "animation.js"
+      - "shared-data.js"
+      - "engine.test.js"
       - ".github/workflows/validate-global360.yml"
   workflow_dispatch:
 
@@ -36,4 +46,6 @@ jobs:
           node --check data.js
           node --check engine.js
           node --check ui.js
+          node --check animation.js
+          node --check shared-data.js
           node --test engine.test.js
