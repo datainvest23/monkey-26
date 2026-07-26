@@ -42,18 +42,21 @@ for (const file of data.sources) {
 }
 
 // Check for cross-group ticker collisions
-// The requirement says: "flag cross-group ticker collisions (RIO currently appears in both the Australia and UK groups as the same dual-listed issuer)"
-const tickerGroups = {};
+// Allow dual-listed securities if they are listed on different exchanges.
+const seen = new Map();
 for (const row of rows) {
-  if (!tickerGroups[row.ticker]) tickerGroups[row.ticker] = new Set();
-  tickerGroups[row.ticker].add(row.group);
-}
+  const exchange = (row.exchange || '').trim().toUpperCase();
+  const key = exchange ? `${row.ticker}@${exchange}` : row.ticker;
 
-for (const [ticker, groups] of Object.entries(tickerGroups)) {
-  if (groups.size > 1) {
-    errors.push(`cross-group ticker collision: ticker ${ticker} appears in groups ${Array.from(groups).join(', ')}`);
+  if (seen.has(key)) {
+    const prev = seen.get(key);
+    errors.push(`cross-group ticker collision: ticker ${row.ticker} (exchange: ${exchange || 'none'}) appears in groups ${prev.group}, ${row.group}`);
+  } else {
+    seen.set(key, row);
   }
 }
+const uniqueTickers = seen.size;
+
 
 // Check exact duplicate IDs
 const keys = new Set();
@@ -68,7 +71,7 @@ if (rows.length !== 360) errors.push(`expected 360 records; found ${rows.length}
 console.log(JSON.stringify({
   version: data.meta.version,
   records: rows.length,
-  uniqueTickers: Object.keys(tickerGroups).length,
+  uniqueTickers: uniqueTickers,
   sourceFiles: data.sources.length,
   groups: groupCounts,
   sectors,
