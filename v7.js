@@ -7,8 +7,8 @@ function prepareTitle(){
   var title=document.querySelector('.hero h1');
   if(!title||title.classList.contains('hero-title-reveal'))return;
   title.classList.add('hero-title-reveal');
-  title.setAttribute('aria-label','Any monkey can beat the market.');
-  title.innerHTML='<span class="title-line"><span class="title-word" style="--word-index:0">Any</span> <em class="title-word" style="--word-index:1">Monkey</em></span><span class="title-line"><span class="title-word" style="--word-index:2">Can</span> <span class="title-word" style="--word-index:3">Beat</span> <span class="title-word" style="--word-index:4">The</span> <span class="title-word" style="--word-index:5">Market.</span><span class="title-caret" aria-hidden="true"></span></span>';
+  title.setAttribute('aria-label','Any monkey can beat the market');
+  title.innerHTML='<span class="title-line"><span class="title-word" style="--word-index:0">Any</span> <em class="title-word" style="--word-index:1">Monkey</em></span><span class="title-line"><span class="title-word" style="--word-index:2">Can</span> <span class="title-word" style="--word-index:3">Beat</span> <span class="title-word" style="--word-index:4">The</span> <span class="title-word" style="--word-index:5">Market</span><span class="title-caret" aria-hidden="true"></span></span>';
   var hero=document.querySelector('.hero');
   if(!hero)return;
   var copy=hero.querySelector('.hero-copy');
