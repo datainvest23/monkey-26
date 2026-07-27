@@ -6,31 +6,42 @@ Version 3 expands the original 31-ticker prototype into a governed **Global 360*
 
 ## What actually ships
 
-The current codebase is a layered stack of patches applied on top of the original version:
-- `index.html` redirects to `v4.html`.
-- `v4.html` loads `v4-animation.js`, which dynamically injects `v5.css` and chain-loads `v6.js` -> `v7.js` -> `v8.js` -> `v9.js`.
-- Each JS layer injects its own stylesheet and rewrites the DOM produced by the previous layer.
-- Application state is read back out of the DOM via `parseInt(textContent)`.
-- The UI claims a cryptographic draw, but `v3-engine.js` silently falls back to `Math.random()` when crypto is unavailable.
-- `app.js`, `tickers.js`, and intro media files have been moved out of the served root.
+The application uses an ES module architecture consisting of:
+- \`index.html\` (the static shell)
+- \`styles.css\` (single stylesheet)
+- \`shared-data.js\`, \`data.js\`, \`engine.js\`, \`ui.js\`, \`animation.js\` (ES modules)
+
+The engine provides a direct 1/n draw with rejection sampling, maintaining mathematical fairness.
+
+Known limitations:
+- Large-cap concentration (338 of 360).
+- Probability is uniform across listings rather than issuers.
+- Price fields are unpopulated.
+- The provisional p-value is below 5n throws.
 
 ## Run locally
 
-Because the universe is loaded through `fetch`, serve the repository through a local web server:
+Because the universe is loaded through \`fetch\`, serve the repository through a local web server:
 
-```bash
+\`\`\`bash
 python -m http.server 8000
-```
+\`\`\`
 
-Then open `http://localhost:8000`.
+Then open \`http://localhost:8000\`.
 
 ## Validate the Global 360 source
 
-```bash
+\`\`\`bash
 node scripts/validate-universe.js
-```
+\`\`\`
 
 The validator checks source-file availability, field structure, record count, mandatory values and group/ticker uniqueness.
+
+## Run Engine Tests
+
+\`\`\`bash
+node --test engine.test.js
+\`\`\`
 
 ## Disclaimer
 

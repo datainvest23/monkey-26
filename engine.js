@@ -106,6 +106,7 @@ export class Engine {
     this.throws = 0;
     this.counts = {};
     this.rng = { calls: 0, rejections: 0, last: null };
+    if (this.active && this.active.length > 0) this.newEdition();
   }
 
   setUniverse(rows, label) {
@@ -126,15 +127,9 @@ export class Engine {
     let pick = this.rand(this.active.length);
     let selectionRng = Object.assign({}, this.rng.last);
     let security = this.active[pick];
-    // Decouple shuffle from draw: shuffle once per edition, not per throw.
-    // If edition is empty or we reached the end of the current edition, shuffle a new one.
-    // However, the rules specify: "shuffle once per edition, not per throw".
-    // We already shuffle in setUniverse -> newEdition().
-    // We will just find the position in the current edition.
-    // BUT, wait, the "dart" is thrown directly at the active array, so the position in the edition doesn't matter for probability,
-    // it just determines the page/line representation.
-    let editionCalls = 0; // We no longer shuffle per throw
+    // The dart is thrown directly at the active array; position in the edition determines page/line representation.
     let position = this.edition.findIndex(d => d.id === security.id);
+    if (position < 0) { position = 0; }
     let spread = Math.floor(position / this.pageSize) + 1;
     let within = position % this.pageSize;
     let side = within < 12 ? 'left' : 'right';
@@ -156,7 +151,6 @@ export class Engine {
       universeSize: this.active.length,
       universeLabel: this.label,
       version: this.dataVersion,
-      editionCalls: editionCalls,
       rng: selectionRng
     };
 
