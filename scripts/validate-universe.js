@@ -1,3 +1,4 @@
+
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -14,6 +15,39 @@ const groupCounts = {};
 const sizeBands = {};
 const sectors = {};
 
+// Basic structural schema validation
+function validateSchemaStruct(groups, file) {
+  if (typeof groups !== 'object' || groups === null || Array.isArray(groups)) {
+    return `Root must be an object in ${file}`;
+  }
+  for (const [groupName, groupData] of Object.entries(groups)) {
+    if (!/^[a-z_]+$/.test(groupName)) {
+      return `Invalid group name '${groupName}' in ${file}`;
+    }
+    if (!Array.isArray(groupData)) {
+      return `Group '${groupName}' must be an array in ${file}`;
+    }
+    for (let i = 0; i < groupData.length; i++) {
+      const item = groupData[i];
+      if (typeof item !== 'object' || item === null || Array.isArray(item)) {
+        return `Item ${i} in group '${groupName}' must be an object in ${file}`;
+      }
+      const required = ['ticker', 'name', 'sector', 'industry', 'size_band'];
+      for (const req of required) {
+        if (typeof item[req] !== 'string') {
+          return `Missing or invalid required property '${req}' in item ${i} of group '${groupName}' in ${file}`;
+        }
+      }
+      for (const key of Object.keys(item)) {
+        if (![...required, 'price', 'return_pct'].includes(key)) {
+          return `Unknown property '${key}' in item ${i} of group '${groupName}' in ${file}`;
+        }
+      }
+    }
+  }
+  return null;
+}
+
 for (const file of data.sources) {
   const fullPath = path.join(__dirname, '..', file);
   if (!fs.existsSync(fullPath)) {
@@ -26,6 +60,11 @@ for (const file of data.sources) {
   } catch(e) {
     errors.push(`failed to parse JSON in ${file}: ${e.message}`);
     continue;
+  }
+
+  const schemaError = validateSchemaStruct(groups, file);
+  if (schemaError) {
+    errors.push(`JSON Schema validation failed: ${schemaError}`);
   }
 
   try {
@@ -56,7 +95,6 @@ for (const row of rows) {
   }
 }
 const uniqueTickers = seen.size;
-
 
 // Check exact duplicate IDs
 const keys = new Set();
